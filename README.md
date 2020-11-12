@@ -1,4 +1,4 @@
-# CodingNomads Java Fundamentals
+# CodingNomads Java Fundamentals Let's try to see what this does
 
 This project contains a variety of textbook examples and labs focused on Java labs_examples.fundamentals.
 
