@@ -1,9 +1,13 @@
 1) If you haven't already, please create a Github account if you have not already done so.
 
+
 2) Once complete, practice the following on your own machine and paste the commands you run for each step below.
+
 
 Initializing git folder
     1. In CodingNomads folder, create new folder git_practice
+
+
     2. Inside git_practice:
         a. Initialize folder as a git folder (make sure you are in the correct folder when initializing) by running
             the "git init" command within the git_practice folder.
@@ -19,6 +23,20 @@ Initializing git folder
             ii.  Add file(s)
             iii. Commit file(s)
             iv.  Push file(s) to Github repository
+
+
+                89  cd git_practice\
+                90  git init
+                91  vim file1.txt
+                92  git add file1.txt
+                93  git commit -m "new file added"
+                94  git remote add panther https://github.com/panoslep/git_practice.git
+                95  git remote v
+                96  git remote -v
+                97  git push
+                98  git push panther master
+                99  git status
+               100  history
 
 Adding a remote
     1. Create new personal repository on Github named "git_practice_2".
