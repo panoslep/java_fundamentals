@@ -12,6 +12,22 @@ class ArithmeticOperators {
 
         // write your code below
 
+        double a = 1.1;
+        double b = 2.2;
+
+        //addition
+        System.out.println("a+b= "+ (a+b) );
+        // subtraction
+        System.out.println("a-b= "+ (a-b));
+        // multiplication
+        System.out.println("axb= "+ (a*b));
+        // division
+        System.out.println("a/b "+ (a/b));
+        // modulus
+        System.out.println("mod(a/b) = " + (a%b));
+        System.out.println("mod(b/a) = " + (b%a));
+
+
     }
 
 }
