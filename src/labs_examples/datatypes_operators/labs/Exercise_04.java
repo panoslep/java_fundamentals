@@ -19,6 +19,27 @@ class RelationalOperators {
 
         // write your code below
 
+        double val = 2;
+        for(int i=0; i<4; i++)
+        {
+            if (val < i){
+                System.out.println("val is less than "+i);
+            }
+            if (val <= i){
+                System.out.println("val is less than or equal to "+i);
+            }
+            if (val == i){
+                System.out.println("val is equal to "+i);
+            }
+            if (val >= i){
+                System.out.println("val is greater than or equal than "+i);
+            }
+            if (val > i){
+                System.out.println("val is greater than "+i);
+            }
+
+        }
+
     }
 
 }
