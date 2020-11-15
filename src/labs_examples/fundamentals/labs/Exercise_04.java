@@ -19,7 +19,6 @@ public class Exercise_04 {
         double myDoubleNum = 3165484.4654641d; // Double
         char myLetter = 'D';         // Character
         boolean myBool = true;       // Boolean
-        String myText = "Hello";     // String
 
         System.out.println("byte myByte is: " + myByte);
         System.out.println("short myShortNum is: " + myShortNum);
@@ -29,7 +28,6 @@ public class Exercise_04 {
         System.out.println("double myDoubleNum is: " + myDoubleNum);
         System.out.println("char myLetter is: " + myLetter);
         System.out.println("boolean myBool is: " + myBool);
-        System.out.println("String myText is: " + myText);
 
         // write your code below
 
