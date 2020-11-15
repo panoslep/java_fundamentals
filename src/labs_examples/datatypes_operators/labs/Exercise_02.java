@@ -25,5 +25,24 @@ public class Exercise_02 {
 
         // write code here
 
+        //Widening
+
+        //declare int
+        int myInt = 10;
+        //declare double and set it equal to widened myInt
+        double myDouble = myInt;
+
+        System.out.println("myDouble= " + myDouble);
+
+        //Narrowing
+        // declare double
+        double myNewDouble = 10.5;
+        // declare int set equal to douvle (casting)
+        int myNewInt = (int)myNewDouble;
+
+        System.out.println("myNewInt= "+myNewInt);
+
+        //Information is lost in narrowing with casting
+
     }
 }
