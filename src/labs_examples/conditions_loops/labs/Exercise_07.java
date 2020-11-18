@@ -1,5 +1,7 @@
 package labs_examples.conditions_loops.labs;
 
+import java.util.Scanner;
+
 /**
  * Conditions and Loops Exercise 7: First vowel
  *
@@ -14,4 +16,30 @@ package labs_examples.conditions_loops.labs;
  */
 
 public class Exercise_07 {
+
+    public static void main(String[] args)
+    {
+        //get word input
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("What is your word?");
+        String word = scanner.nextLine();
+        String vowels ="aeiou";
+
+        System.out.println(word.indexOf("aeiou");
+         //     ;
+         //       charAt()indexOf((word.charAt(3)))));
+        int i = 0;
+        while (i<word.length()){
+            //if (vowels.contains(word.charAt(i)));
+            {
+
+            }
+
+            i++;
+        }
+
+        System.out.println(word);
+
+
+    }
 }
