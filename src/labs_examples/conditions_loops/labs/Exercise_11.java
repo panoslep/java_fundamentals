@@ -22,9 +22,16 @@ package labs_examples.conditions_loops.labs;
  */
 
 public class Exercise_11 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-        System.out.print();
+        System.out.println("1\t\t2\t\t3\t\t4\t\t5\t\t6\t\t7\t\t8\t\t9\t\t10");
+        for (int i = 2; i <= 10; i++) {
+            for int( int j = 1;
+            j <= 10;
+            j++)
+            System.out.print(j + "\t");
+        }
+    }
 
     }
 
