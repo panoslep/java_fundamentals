@@ -1,5 +1,7 @@
 package labs_examples.conditions_loops.labs;
 
+import sun.security.mscapi.CPublicKey;
+
 import java.util.Scanner;
 
 /**
@@ -17,29 +19,34 @@ import java.util.Scanner;
 
 public class Exercise_07 {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         //get word input
         Scanner scanner = new Scanner(System.in);
         System.out.println("What is your word?");
         String word = scanner.nextLine();
-        String vowels ="aeiou";
+        String vowels = "aeiou";
 
-        System.out.println(word.indexOf("aeiou");
-         //     ;
-         //       charAt()indexOf((word.charAt(3)))));
-        int i = 0;
-        while (i<word.length()){
-            //if (vowels.contains(word.charAt(i)));
-            {
+        System.out.println(word.indexOf("a"));
+        System.out.println(word.charAt(1));
+        System.out.println();
 
-            }
+        //     ;
+        //       charAt()indexOf((word.charAt(3)))));
+        //  int i = 0;
+        //  while (i<word.length()){
+        //CharSequence checkLetter = word.charAt(i);
+        //if (vowels.contains(CharSequence(checkLetter)) {
 
-            i++;
-        }
 
-        System.out.println(word);
+        //    i++;
+
 
 
     }
-}
+
+
+    }
+
+
+
+
