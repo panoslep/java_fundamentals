@@ -18,6 +18,26 @@ package labs_examples.arrays.labs;
 public class Exercise_03 {
 
     public static void main(String[] args) {
-        
+
+        int[][] mat = new int[5][5];
+        int k = 3;
+
+        //populate matrix
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat[i].length; j++) {
+                mat[i][j] = k;
+                k = +3;
+            }
+        }
+
+        //print matrix
+        for (int x : mat) {
+            for (int y : mat[x]) {
+                System.out.print(mat[x][y]);
+            }
+            System.out.println();
+        }
+
+
     }
 }
