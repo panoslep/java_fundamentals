@@ -11,7 +11,17 @@ package labs_examples.arrays.labs;
 public class Exercise_05 {
     public static void main(String[] args){
 
-        
+        int[] array = new int[11];
+
+        //populate array
+        for (int x:array){
+            array[x]=x;
+        }
+
+        //print reverse order every other element
+        for (int j=array.length; j>=0; j+=2){
+            System.out.print(array[j]);
+        }
 
 
     }
