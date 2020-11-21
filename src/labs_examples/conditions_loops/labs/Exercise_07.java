@@ -22,52 +22,24 @@ public class Exercise_07 {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What is your word?");
         String word = scanner.nextLine();
-        String firstVowel = "no vowels";
-        Boolean foundVowel=false;
+        String vowels = "aeiou";
+        Boolean foundVowel = false;
 
         //System.out.println(word.indexOf("a"));
         int i = 0;
-        while (i<word.length()) {
+        while (i < word.length()) {
 
             char letter = word.charAt(i);
-            if(!foundVowel) {
-                    switch (letter) {
-                        case 'a':
-                            firstVowel = "a";
-                            foundVowel = true;
-                            break;
-                        case 'e':
-                            firstVowel = "e";
-                            foundVowel = true;
-                            break;
-                        case 'i':
-                            firstVowel = "i";
-                            foundVowel = true;
-                            break;
-                        case 'o':
-                            firstVowel = "o";
-                            foundVowel = true;
-                            break;
-                        case 'u':
-                            firstVowel = "u";
-                            foundVowel = true;
-                            break;
-                        default:
-                    }
+            int ind = vowels.indexOf(letter);
+            if (ind >= 0){
+                System.out.println("The first vowel is " + letter);
+                return;
             }
             i++;
-
         }
-        if(foundVowel)
-        System.out.println("The first vowel of "+word+" is "+firstVowel);
-        else
-            System.out.println(word + " has "+firstVowel);
-
-        }
-
-
-
+        System.out.println("There are no vowels in: " + word);
     }
+}
 
 
 

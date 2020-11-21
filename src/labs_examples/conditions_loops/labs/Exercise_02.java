@@ -42,7 +42,7 @@ public class Exercise_02 {
                                 System.out.println("It's Saturday");
                         }else
                             System.out.println("It's Friday");
-                        }else
+                    }else
                         System.out.println("It's Thursday");
                 }else
                     System.out.println("It's Wednesday");

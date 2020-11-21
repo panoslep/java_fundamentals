@@ -15,26 +15,24 @@ import java.util.Scanner;
 public class Exercise_01 {
     public static void main(String[] args) {
         int[] nums = new int[10];
-
+        Scanner scanner = new Scanner(System.in);
 
         // Get 10 nums from the user:
         System.out.println("Please give 10 numbers:");
         for (int i = 0; i < 10; i++) {
-            Scanner scanner = new Scanner(System.in);
             System.out.println();
             nums[i] = scanner.nextInt();
-            //scanner.close();
-
         }
+        scanner.close();
+
 
         // calculate sum and mean
         int sum = 0;
         int mean = 0;
         for (int x : nums) {
-            sum += nums[x];
-            mean += nums[x] / nums.length;
+            sum += x;
         }
-
+        mean = sum / nums.length;
         System.out.println("your numbers are: ");
         for(int x : nums) {
             System.out.print(x + " ");
@@ -42,6 +40,5 @@ public class Exercise_01 {
         System.out.println("The sum is: " + sum);
         System.out.println("The mean is: " + mean);
     }
-
-    }
+}
 

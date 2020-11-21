@@ -27,10 +27,7 @@ public class Exercise_01 {
         if (number%2==0) {
             System.out.println("Your number is EVEN");
         }else {
-                System.out.println("Your number and you are ODD");
+            System.out.println("Your number and you are ODD");
         }
-
-
-
     }
 }

@@ -9,15 +9,14 @@ package labs_examples.arrays.labs;
  */
 
 public class Exercise_04 {
-    public static void main(String[] args)
-    {
-        //int[][] irregular = {{1 2 3},{1, 2,3, 4, 5}};
+    public static void main(String[] args) {
+        int[][] irregular = { {1, 2, 3}, {1, 2,3, 4, 5} };
 
-        for (int x:irregular)
+        for (int[] x:irregular)
         {
-            for (int y:irregular[x])
+            for (int y:x)
             {
-                System.out.print(irregular[x][y]);
+                System.out.print(y);
             }
             System.out.println();
         }

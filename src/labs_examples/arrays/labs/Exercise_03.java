@@ -26,18 +26,16 @@ public class Exercise_03 {
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
                 mat[i][j] = k;
-                k = +3;
+                k += 3;
             }
         }
 
         //print matrix
-        for (int x : mat) {
-            for (int y : mat[x]) {
-                System.out.print(mat[x][y]);
+        for (int[] x : mat) {
+            for (int y : x) {
+                System.out.print(y + "\t");
             }
             System.out.println();
         }
-
-
     }
 }

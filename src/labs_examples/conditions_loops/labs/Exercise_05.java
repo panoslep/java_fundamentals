@@ -25,8 +25,16 @@ public class Exercise_05 {
         int lowBound = scanner.nextInt();
         int upBound = scanner.nextInt();
 
-        int sum = Math.abs(upBound*(upBound-1)/2 - lowBound*(lowBound-1)/2+lowBound);
-        double average = (double)(upBound+lowBound)/2;
+//        int sum = Math.abs(upBound*(upBound-1)/2 - lowBound*(lowBound-1)/2+lowBound);
+
+        int sum = 0;
+        int k = 0;
+        for (int i = lowBound; i <= upBound; i++){
+            sum+=i;
+            k++;
+        }
+
+        double average = (double)(sum)/k; //(upBound-lowBound+1);
         System.out.println("The sum is: "+sum);
         System.out.println("The average is: "+average);
     }
