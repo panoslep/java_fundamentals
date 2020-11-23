@@ -1,5 +1,7 @@
 package labs_examples.objects_classes_methods.labs.objects;
 
+import java.sql.SQLOutput;
+
 public class Exercise_01 {
 
     public static void main(String[] args) {
@@ -12,14 +14,12 @@ public class Exercise_01 {
 
         Performance myPerformance = new Performance(0.83, 45000, 800);
 
-        Airplane myAirplace = new Airplane(myEngine, myStereo, "XTerra", "Blue");
+        Airplane myAirplane = new Airplane(myPerformance, maintenance1, capacity1, myModel);
 
-        System.out.println("I drive a " + myCar.color + " " + myCar.model + " with a "
-
-                + myCar.stereo.brand + " stereo, and a " + myCar.engine.horsePower + " engine");
-
-        // OR
-
-        System.out.println(myCar.toString());
+        System.out.println("My airplane is a " + myAirplane.getAirModel().getManufacturer()+" "+myAirplane.getAirModel().getType()+".");
+        System.out.println("It can take "+ myAirplane.getCapacity().getMaxPassengers() + " nice people to their destination.");
+        System.out.println("Looking from "+myAirplane.getPerformance().getMaxAltitude()+ " feet high. What a sight!");
+        System.out.println("I just have to remember to service it next "+myAirplane.getMaintenance().getMonthOfLastService()+".");
+        System.out.println(myAirplane.toString());
     }
 }
