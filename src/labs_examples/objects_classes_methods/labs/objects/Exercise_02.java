@@ -7,7 +7,7 @@ public class Exercise_02 {
         Player messi = new Player("Lionel Messi", "Argentine", 33,"SS");
         Team barcelona = new Team("Barcelona FC", "blue/red", "La Liga");
 
-        System.out.println(messi.name + " is a " + messi.age + " yo "+ messi.nationality + " footballer who plays in "+barclelona.league+ " for "+ barclelona.teamName+".");
+        System.out.println(messi.name + " is a " + messi.age + " yo "+ messi.nationality + " footballer who plays in "+barcelona.league+ " for "+ barcelona.teamName+".");
     }
 }
 
