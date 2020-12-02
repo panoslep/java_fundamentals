@@ -8,6 +8,7 @@ class Airplane {
     Maintenance maintenance;
     Capacity capacity;
     Model airModel;
+    Engine[] engines;
 
     public Airplane(Performance performance, Maintenance maintenance, Capacity capacity, Model airModel) {
         this.performance = performance;

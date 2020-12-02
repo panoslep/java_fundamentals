@@ -11,6 +11,7 @@ public class Exercise_01 {
         // call each of those methods from here, within the main()
         int a = 10;
         int b = 5;
+        int prod = multiply(a, b);
         System.out.println("a = " + a);
         System.out.println("b = " + b);
         System.out.println("a * b = " + multiply(a, b));
