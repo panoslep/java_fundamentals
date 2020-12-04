@@ -7,12 +7,9 @@ public class Cetacean extends Mammal{
     int diveDepth;
     int swimSpeed; //to override speed
 
-    public Cetacean(int gestation_period) {
-        super(gestation_period);
-    }
 
-    public Cetacean(int lifespan, int weight, int length, String habitat, String conservationStatus, int gestation_period, int speed, int diveTime, int diveDepth) {
-        super(lifespan, weight, length, habitat, conservationStatus, gestation_period, speed);
+    public Cetacean(String name, int lifespan, int weight, int length, String habitat, String conservationStatus, int gestation_period, int speed, int diveTime, int diveDepth) {
+        super(name, lifespan, weight, length, habitat, conservationStatus, gestation_period, speed);
         this.diveDepth = diveDepth;
         this.diveTime = diveTime;
     }
@@ -40,4 +37,10 @@ public class Cetacean extends Mammal{
     public void setSwimSpeed(int swimSpeed) {
         this.swimSpeed = swimSpeed;
     }
+
+    @Override
+    public void printSpeed(){
+        System.out.println("A " + name + " can swim as fast as " + swimSpeed + " km/h.");
+    }
+
 }

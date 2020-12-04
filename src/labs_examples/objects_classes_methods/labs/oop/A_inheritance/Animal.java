@@ -70,4 +70,15 @@ public class Animal {
     public void setConservationStatus(String conservationStatus) {
         this.conservationStatus = conservationStatus;
     }
+
+    // prints information about the animal
+    public void animalInfo(){
+        System.out.println("A " + name + " is an animal that lives up to " + lifespan + " years. It weighs " + weight + " kg and can reach a length of " + length + " m ");
+        System.out.println("A " + name + " can be found in the " + habitat);
+        System.out.println("According to its conservation status, it's classified as: " + conservationStatus);
+    }
+
+
+
+
 }
