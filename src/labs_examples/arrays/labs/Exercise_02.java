@@ -22,13 +22,15 @@ public class Exercise_02 {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please type a number from 1-10: ");
         int num = scanner.nextInt();
+        int index = array.length - num;
+        System.out.println("the index of your element is: " + index);
 
-        // find index in array
-        for (int i = 0; i < array.length; i++){
-            if (array[i] == num){
-                int ind = i;
-                System.out.println("the index of your element is: " + ind);
-            }
-        }
+//        // find index in array
+//        for (int i = 0; i < array.length; i++){
+//            if (array[i] == num){
+//                int ind = i;
+//                System.out.println("the index of your element is: " + ind);
+//            }
+//        }
     }
 }

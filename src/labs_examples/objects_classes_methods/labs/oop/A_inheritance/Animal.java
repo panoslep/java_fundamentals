@@ -1,6 +1,7 @@
 package labs_examples.objects_classes_methods.labs.oop.A_inheritance;
 
 public class Animal {
+    String name;
     int lifespan;
     int weight;
     int length;
@@ -13,12 +14,21 @@ public class Animal {
         conservationStatus = "extinct";
 
     }
-    public Animal(int lifespan, int weight, int length, String habitat, String conservationStatus) {
+    public Animal(String name,int lifespan, int weight, int length, String habitat, String conservationStatus) {
+        this.name =name;
         this.lifespan = lifespan;
         this.weight = weight;
         this.length = length;
         this.habitat = habitat;
         this.conservationStatus = conservationStatus;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getLifespan() {
