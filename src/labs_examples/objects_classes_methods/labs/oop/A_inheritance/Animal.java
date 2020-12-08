@@ -1,12 +1,13 @@
 package labs_examples.objects_classes_methods.labs.oop.A_inheritance;
 
 public class Animal {
-    String name;
-    int lifespan;
-    int weight;
-    int length;
-    String habitat;
-    String conservationStatus;
+    private String name;
+    private int lifespan;
+    private int weight;
+    private int length;
+    private String habitat;
+    private String conservationStatus;
+    private int speed;
 
     public  Animal(){
         lifespan = weight = length = 1;
@@ -14,13 +15,14 @@ public class Animal {
         conservationStatus = "extinct";
 
     }
-    public Animal(String name,int lifespan, int weight, int length, String habitat, String conservationStatus) {
+    public Animal(String name,int lifespan, int weight, int length, String habitat, String conservationStatus, int speed) {
         this.name =name;
         this.lifespan = lifespan;
         this.weight = weight;
         this.length = length;
         this.habitat = habitat;
         this.conservationStatus = conservationStatus;
+        this.speed = speed;
     }
 
     public String getName() {
@@ -71,6 +73,14 @@ public class Animal {
         this.conservationStatus = conservationStatus;
     }
 
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
     // prints information about the animal
     public void animalInfo(){
         System.out.println("A " + name + " is an animal that lives up to " + lifespan + " years. It weighs " + weight + " kg and can reach a length of " + length + " m ");
@@ -78,6 +88,10 @@ public class Animal {
         System.out.println("According to its conservation status, it's classified as: " + conservationStatus);
     }
 
+    public void vocalize(){
+        System.out.println("Animal noise");
+
+    }
 
 
 

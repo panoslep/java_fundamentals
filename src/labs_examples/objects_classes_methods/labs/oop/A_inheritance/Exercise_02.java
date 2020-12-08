@@ -9,32 +9,31 @@ package labs_examples.objects_classes_methods.labs.oop.A_inheritance;
 class A {
     int i = 10;
 
-    public void test() {
-        System.out.println("test print in A");
+    public int get_i() {
+        return i;
     }
 }
 
 class B extends A{
-    int i = 20;
-    public  B(){
-        System.out.println("in B");
+    //int i = 20;
+
+    @Override
+    public int get_i(){
+        return i*2;
     }
-    public void test(){
-        System.out.println("test print in B");
-    }
+
+
 }
 
 public class Exercise_02 {
 
     public static void main(String[] args) {
-        A a = new B();
+        A a = new A();
         B b = new B();
-        A a2 = new A();
 
-        System.out.println(a.i);
-        a.test();
-        System.out.println(b.i);
-        System.out.println(a2.i);
-        a2.test();
+
+        System.out.println(a.get_i());
+        System.out.println(b.get_i());
+
     }
 }

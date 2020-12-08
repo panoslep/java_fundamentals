@@ -3,13 +3,15 @@ package labs_examples.objects_classes_methods.labs.oop.A_inheritance;
 // aquatic mammals
 public class Cetacean extends Mammal{
 
-    int diveTime;
-    int diveDepth;
-    int swimSpeed; //to override speed
+    private int diveTime;
+    private int diveDepth;
+
+    public Cetacean(){
+    }
 
 
-    public Cetacean(String name, int lifespan, int weight, int length, String habitat, String conservationStatus, int gestation_period, int speed, int diveTime, int diveDepth) {
-        super(name, lifespan, weight, length, habitat, conservationStatus, gestation_period, speed);
+    public Cetacean(String name,  int weight, int length, int diveTime, int diveDepth) {
+        super(name, 50, weight, length, "ocean", "protected", 210, 56);
         this.diveDepth = diveDepth;
         this.diveTime = diveTime;
     }
@@ -30,17 +32,13 @@ public class Cetacean extends Mammal{
         this.diveDepth = diveDepth;
     }
 
-    public int getSwimSpeed() {
-        return swimSpeed;
-    }
-
-    public void setSwimSpeed(int swimSpeed) {
-        this.swimSpeed = swimSpeed;
+    @Override
+    public void printSpeed(){
+        System.out.println("A " + getName() + " can swim as fast as " + getSpeed() + " km/h.");
     }
 
     @Override
-    public void printSpeed(){
-        System.out.println("A " + name + " can swim as fast as " + swimSpeed + " km/h.");
+    public void vocalize(){
+        System.out.println("click click");
     }
-
 }
