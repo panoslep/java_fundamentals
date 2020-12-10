@@ -7,6 +7,8 @@ public class Player {
     int potValue;
 
     public Player(){
-
+        name = "default Player";
+        hand = new Hand();
+        potValue = 100;
     }
 }
