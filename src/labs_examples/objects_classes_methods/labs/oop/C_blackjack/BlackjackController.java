@@ -5,10 +5,11 @@ public class BlackjackController {
     public static void main(String[] args) {
 
         Player myPlayer = new Player();
+        Deck myDeck = new Deck();
 
     }
 
-    public void deal(Player myPlayer) {
+    public void deal(Player myPlayer, Deck myDeck) {
 
         int int_random;
         boolean chosen = false;
@@ -19,12 +20,15 @@ public class BlackjackController {
             Random rand = new Random();
             int_random = rand.nextInt(52);
 
-            if !(myDeck.usedCards.contains(int_random)){
+            // check if the card has not been used
+            if (!myDeck.usedCards.contains(int_random)){
                 chosen = true;
+                //add card to used cards
                 myDeck.usedCards.add(int_random);
+                //add card to hand
+                myPlayer.hand.cards.add(myDeck.cards[int_random]);
             }
         } while (!chosen);
-
 
     }
 }
