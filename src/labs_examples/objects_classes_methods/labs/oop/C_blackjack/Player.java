@@ -2,9 +2,9 @@ package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 
 public class Player {
 
-    String name;
-    Hand hand;
-    int potValue;
+    private String name;
+    private Hand hand;
+    private int potValue;
 
     public Player(){
         name = "default Player";
@@ -21,6 +21,30 @@ public class Player {
     //computer player stops at 16, return true if they want another card
     public boolean computerAI(){
         return (hand.returnScore()<16);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Hand getHand() {
+        return hand;
+    }
+
+    public void setHand(Hand hand) {
+        this.hand = hand;
+    }
+
+    public int getPotValue() {
+        return potValue;
+    }
+
+    public void setPotValue(int potValue) {
+        this.potValue = potValue;
     }
 }
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Deck {
 
-    Card[] cards;
+    Card[] cards = new Card[52];
     ArrayList<Integer> usedCards = new ArrayList<Integer>();
 
     public Deck(){

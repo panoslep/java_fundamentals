@@ -4,19 +4,16 @@ import java.util.Scanner;
 
 public class BlackjackController {
     public static void main(String[] args) {
-
-        //Player myPlayer = new Player();
-        Deck myDeck = new Deck();
-
+        playBlackJack();
     }
 
-    public void playBlackJack(){
+    public static void playBlackJack(){
         //start with a new deck
         Deck myDeck = new Deck();
 
         // create computer player
-        int computerPotvalue = 100;
-        Player comPlayer = new Player("dealer", 100);
+        int computerPotValue = 100;
+        Player comPlayer = new Player("dealer", computerPotValue);
 
         // create user player
         System.out.println("What's your name?");
@@ -35,11 +32,36 @@ public class BlackjackController {
         System.out.println("New Game");
         System.out.println("----------");
         System.out.println("Dealer:");
-        print(comPlayer.hand.cards[1])
+        comPlayer.getHand().cards.get(0).printCard();
+        comPlayer.getHand().cards.get(1).printCard();
+        System.out.println();
+        System.out.println(myPlayer.getName());
+        myPlayer.getHand().cards.get(0).printCard();
+        myPlayer.getHand().cards.get(1).printCard();
 
+        boolean stop = false;
+        while (!stop){
+            System.out.println();
+            System.out.println("Do you want another card (y/n) ?");
+            Scanner scan2 = new Scanner(System.in);
+            String giveMeCard = scan2.nextLine();
+            if (giveMeCard.equals("n")){
+                stop = true;
+            }
+            else if (giveMeCard.equals("y")) {
+                deal(myPlayer, myDeck);
+                System.out.println();
+                for (int i = 0; i < myPlayer.getHand().cards.size(); i++){
+                    myPlayer.getHand().cards.get(i).printCard();
+                }
+            }
+            else{
+                System.out.println("Please type \"y\" or \"n\".");
+            }
+        }
     }
 
-    public void deal(Player myPlayer, Deck myDeck) {
+    public static void deal(Player myPlayer, Deck myDeck) {
 
         int int_random;
         boolean chosen = false;
@@ -56,7 +78,7 @@ public class BlackjackController {
                 //add card to used cards
                 myDeck.usedCards.add(int_random);
                 //add card to hand
-                myPlayer.hand.cards.add(myDeck.cards[int_random]);
+                myPlayer.getHand().cards.add(myDeck.cards[int_random]);
             }
         } while (!chosen);
 
