@@ -11,4 +11,17 @@ public class Player {
         hand = new Hand();
         potValue = 100;
     }
+
+    public  Player(String name, int potValue){
+        this.name = name;
+        this.potValue = potValue;
+        hand = new Hand();
+    }
+
+    //computer player stops at 16, return true if they want another card
+    public boolean computerAI(){
+        return (hand.returnScore()<16);
+    }
 }
+
+

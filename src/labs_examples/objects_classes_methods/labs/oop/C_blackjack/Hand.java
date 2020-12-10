@@ -17,7 +17,7 @@ public class Hand {
         int tempSum = 0;
         for (int i = 0; i < cards.size(); i++) {
             Card tempCard = cards.get(i);
-            tempSum += tempCard.cardValue;
+            tempSum += tempCard.getCardValue();
         }
 
         return handValue = tempSum;

@@ -1,11 +1,41 @@
 package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 import java.util.Random;
+import java.util.Scanner;
 
 public class BlackjackController {
     public static void main(String[] args) {
 
-        Player myPlayer = new Player();
+        //Player myPlayer = new Player();
         Deck myDeck = new Deck();
+
+    }
+
+    public void playBlackJack(){
+        //start with a new deck
+        Deck myDeck = new Deck();
+
+        // create computer player
+        int computerPotvalue = 100;
+        Player comPlayer = new Player("dealer", 100);
+
+        // create user player
+        System.out.println("What's your name?");
+        Scanner scanner = new Scanner(System.in);
+        String name = scanner.nextLine();
+        System.out.println("Hello " + name);
+        Player myPlayer = new Player(name, 100);
+
+
+        //Deal the first pair of cards
+        deal(myPlayer, myDeck);
+        deal(myPlayer, myDeck);
+        deal(comPlayer, myDeck);
+        deal(comPlayer, myDeck);
+
+        System.out.println("New Game");
+        System.out.println("----------");
+        System.out.println("Dealer:");
+        print(comPlayer.hand.cards[1])
 
     }
 
