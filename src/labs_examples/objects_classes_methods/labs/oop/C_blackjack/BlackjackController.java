@@ -19,7 +19,7 @@ public class BlackjackController {
         System.out.println("What's your name?");
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
-        System.out.println("Hello " + name);
+        System.out.println("Hello " + name +"!");
         Player myPlayer = new Player(name, 100);
 
 
@@ -29,20 +29,23 @@ public class BlackjackController {
         deal(comPlayer, myDeck);
         deal(comPlayer, myDeck);
 
+        System.out.println("\n----------");
         System.out.println("New Game");
         System.out.println("----------");
         System.out.println("Dealer:");
         comPlayer.getHand().cards.get(0).printCard();
         comPlayer.getHand().cards.get(1).printCard();
+        System.out.print("   ---- hand value: " + comPlayer.getHand().returnScore());
         System.out.println();
-        System.out.println(myPlayer.getName());
+        System.out.println(myPlayer.getName() + ":");
         myPlayer.getHand().cards.get(0).printCard();
         myPlayer.getHand().cards.get(1).printCard();
+        System.out.print("   ---- hand value: " + myPlayer.getHand().returnScore());
 
         boolean stop = false;
         while (!stop){
             System.out.println();
-            System.out.println("Do you want another card (y/n) ?");
+            System.out.println("\nDo you want another card (y/n) ?");
             Scanner scan2 = new Scanner(System.in);
             String giveMeCard = scan2.nextLine();
             if (giveMeCard.equals("n")){
@@ -53,6 +56,7 @@ public class BlackjackController {
                 System.out.println();
                 for (int i = 0; i < myPlayer.getHand().cards.size(); i++){
                     myPlayer.getHand().cards.get(i).printCard();
+                    System.out.print("   ---- hand value: " + myPlayer.getHand().returnScore());
                 }
             }
             else{
