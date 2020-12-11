@@ -20,7 +20,7 @@ public class Player {
 
     //computer player stops at 16, return true if they want another card
     public boolean computerAI(){
-        return (hand.returnScore()<16);
+        return (hand.returnScore() < 17);
     }
 
     public String getName() {
