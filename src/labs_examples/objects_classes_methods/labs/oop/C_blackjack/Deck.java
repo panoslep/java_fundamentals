@@ -1,6 +1,7 @@
 package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Deck {
 
@@ -16,5 +17,29 @@ public class Deck {
                 k++;
             }
         }
+    }
+
+    public void deal(Player myPlayer) {
+
+        int int_random;
+        boolean chosen = false;
+
+        do {
+
+            //generate a random number between 0-51
+            Random rand = new Random();
+            int_random = rand.nextInt(52);
+
+            // check if the card has not been used
+            if (!usedCards.contains(int_random))
+            {
+                chosen = true;
+                //add card to used cards
+                usedCards.add(int_random);
+                //add card to hand
+                myPlayer.getHand().cards.add(cards[int_random]);
+            }
+        } while (!chosen);
+
     }
 }

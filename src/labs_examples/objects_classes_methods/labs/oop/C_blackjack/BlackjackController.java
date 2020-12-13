@@ -1,15 +1,14 @@
 package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
-import java.sql.SQLOutput;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class BlackjackController {
 
-    private static boolean playAgain = false;
+    private boolean playAgain = false;
 
     public static void main(String[] args) throws InterruptedException {
 
+        BlackjackController controller = new BlackjackController();
         // create computer player
         int computerPotValue = 100;
         Player comPlayer = new Player("dealer", computerPotValue);
@@ -21,42 +20,68 @@ public class BlackjackController {
         System.out.println("Hello " + name +"!");
         Player myPlayer = new Player(name, 100);
 
-        playBlackJack(myPlayer, comPlayer);
-        while (isPlayAgain()){
+        controller.playBlackJack(myPlayer, comPlayer);
+        while (controller.isPlayAgain()){
             myPlayer.setHand(new Hand());
             comPlayer.setHand(new Hand());
-            playBlackJack(myPlayer, comPlayer);
+            controller.playBlackJack(myPlayer, comPlayer);
         }
     }
 
-    public static void playBlackJack(Player myPlayer, Player comPlayer) throws InterruptedException {
+    public void playBlackJack(Player myPlayer, Player comPlayer) {
+
+        // get betting
+        System.out.println("\nPlease place your bet: ");
+        Scanner scanner = new Scanner(System.in);
+        int bet = scanner.nextInt();
+
         //start with a new deck
         Deck myDeck = new Deck();
 
-        //Deal the first pair of cards
-        deal(myPlayer, myDeck);
-        deal(myPlayer, myDeck);
-        deal(comPlayer, myDeck);
-        deal(comPlayer, myDeck);
+        dealInitialCards(myPlayer, comPlayer, myDeck);
 
-        System.out.println("\n----------");
-        System.out.println("New Game");
-        System.out.println("----------\n");
-        System.out.println("Dealer:");
+        printInitialGameStatus(myPlayer, comPlayer);
 
-        // what the player can see
-        int visScore = comPlayer.getHand().returnScore() - comPlayer.getHand().cards.get(1).getCardValue();
+        dealAdditionalUserCards(myPlayer, myDeck);
+
+        // end round if busted
+        if (myPlayer.getHand().busted()){
+            gameOver(myPlayer, comPlayer, bet);
+            return;
+        }
+
+        dealAdditionalDealerCards(comPlayer, myDeck);
+
+        gameOver(myPlayer, comPlayer, bet);
+    }
+
+    /**
+     * This method deals additional cards to the dealer until the dealer's hand is no longer less than 17.
+     *
+     * @param comPlayer - The Player object that represents the dealer
+     * @param myDeck - The current deck in use
+     */
+    private void dealAdditionalDealerCards(Player comPlayer, Deck myDeck) {
+        // Dealer's turn
         comPlayer.getHand().cards.get(0).printCard();
-        System.out.print("| ? |");
-        System.out.print("   ---- hand value: " + visScore);
-        System.out.println();
-        System.out.println(myPlayer.getName() + ":");
-        myPlayer.getHand().cards.get(0).printCard();
-        myPlayer.getHand().cards.get(1).printCard();
-        System.out.print("   ---- hand value: " + myPlayer.getHand().returnScore() + "\n");
+        comPlayer.getHand().cards.get(1).printCard();
+        System.out.print("   ---- hand value: " + comPlayer.getHand().returnScore() +"\n");
+        while((comPlayer.computerAI())&&(!comPlayer.getHand().busted())){
 
+            //pause for suspense
+            pause(3);
 
+            System.out.print("Dealer hits");
+            myDeck.deal(comPlayer);
+            System.out.println();
+            for (int i = 0; i < comPlayer.getHand().cards.size(); i++) {
+                comPlayer.getHand().cards.get(i).printCard();
+            }
+            System.out.print("   ---- hand value: " + comPlayer.getHand().returnScore());
+        }
+    }
 
+    private void dealAdditionalUserCards(Player myPlayer, Deck myDeck) {
         // Players hand
         boolean stand = false;
         while ((!stand) && (!myPlayer.getHand().busted())){
@@ -70,7 +95,7 @@ public class BlackjackController {
                 System.out.println("Dealer's turn:");
             }
             else if (giveMeCard.equals("y")) {
-                deal(myPlayer, myDeck);
+                myDeck.deal(myPlayer);
                 System.out.println();
                 for (int i = 0; i < myPlayer.getHand().cards.size(); i++) {
                     myPlayer.getHand().cards.get(i).printCard();
@@ -81,62 +106,36 @@ public class BlackjackController {
                 System.out.println("Please type \"y\" or \"n\".");
             }
         }
-        // end round if busted
-        if (myPlayer.getHand().busted())
-        {
-            gameOver(myPlayer, comPlayer);
-            return;
-        }
+    }
 
-
-        // Dealer's turn
+    private void printInitialGameStatus(Player myPlayer, Player comPlayer) {
+        // what the player can see
+        System.out.println("Dealer:");
+        int visScore = comPlayer.getHand().returnScore() - comPlayer.getHand().cards.get(1).getCardValue();
         comPlayer.getHand().cards.get(0).printCard();
-        comPlayer.getHand().cards.get(1).printCard();
-        System.out.print("   ---- hand value: " + comPlayer.getHand().returnScore() +"\n");
-        while((comPlayer.computerAI())&&(!comPlayer.getHand().busted())){
-
-            //pause for suspense
-            pause(3);
-
-            System.out.print("Dealer hits");
-            deal(comPlayer, myDeck);
-            System.out.println();
-            for (int i = 0; i < comPlayer.getHand().cards.size(); i++) {
-                comPlayer.getHand().cards.get(i).printCard();
-            }
-            System.out.print("   ---- hand value: " + comPlayer.getHand().returnScore());
-        }
-
-        gameOver(myPlayer, comPlayer);
-
-
+        System.out.print("| ? |");
+        System.out.print("   ---- hand value: " + visScore);
+        System.out.println();
+        System.out.println(myPlayer.getName() + ":");
+        myPlayer.getHand().cards.get(0).printCard();
+        myPlayer.getHand().cards.get(1).printCard();
+        System.out.print("   ---- hand value: " + myPlayer.getHand().returnScore() + "\n");
     }
 
-    public static void deal(Player myPlayer, Deck myDeck) {
+    private void dealInitialCards(Player myPlayer, Player comPlayer, Deck myDeck) {
+        //Deal the first pair of cards
+        myDeck.deal(myPlayer);
+        myDeck.deal(myPlayer);
+        myDeck.deal(comPlayer);
+        myDeck.deal(comPlayer);
 
-        int int_random;
-        boolean chosen = false;
-
-        do {
-
-            //generate a random number between 0-51
-            Random rand = new Random();
-            int_random = rand.nextInt(52);
-
-            // check if the card has not been used
-            if (!myDeck.usedCards.contains(int_random))
-            {
-                chosen = true;
-                //add card to used cards
-                myDeck.usedCards.add(int_random);
-                //add card to hand
-                myPlayer.getHand().cards.add(myDeck.cards[int_random]);
-            }
-        } while (!chosen);
-
+        System.out.println("\n----------");
+        System.out.println("New Game");
+        System.out.println("----------\n");
     }
 
-    public static void gameOver(Player myPlayer, Player comPlayer){
+
+    public void gameOver(Player myPlayer, Player comPlayer, int bet){
         boolean win = true;
 
         if (myPlayer.getHand().busted()) {
@@ -151,7 +150,7 @@ public class BlackjackController {
             System.out.println("Dealer's hand value : " + comPlayer.getHand().handValue);
         }
         //pause for suspense
-        pause(5);
+        pause(2);
 
 
         //check if dealer's cards are higher:
@@ -162,22 +161,22 @@ public class BlackjackController {
 
         if (win)
         {
-            System.out.println("\n-------------------");
-            System.out.println("|  Congratulations " + myPlayer.getName() + "  |");
-            System.out.println("| You win!!");
-
+            myPlayer.setPotValue(myPlayer.getPotValue() + bet);
+            comPlayer.setPotValue(comPlayer.getPotValue() - bet);
+            printWin(myPlayer);
         }
         else
         {
-            System.out.println("\n--------------------------------");
-            System.out.println("  Tough luck " + myPlayer.getName() + "  :(");
-            System.out.println(" You lost this time around!!");
+            myPlayer.setPotValue(myPlayer.getPotValue() - bet);
+            comPlayer.setPotValue(comPlayer.getPotValue() + bet);
+            printLoss(myPlayer);
         }
-        System.out.println("-------------------");
-        System.out.println("|    Game Over     |");
-        System.out.println("-------------------");
 
         pause(2);
+        setPlayAgain(askNewRound());
+   }
+
+    private boolean askNewRound(){
         System.out.println("Do you want to play again? (y/n)");
         Scanner scan3 = new Scanner(System.in);
         String playAgain = scan3.nextLine();
@@ -200,15 +199,35 @@ public class BlackjackController {
                 setPlayAgain(false);
             }
         }
-   }
+    }
+
+    public void printWin(Player myPlayer){
+        System.out.println("\n-------------------" + myPlayer.nameSize());
+        System.out.println("  Congratulations " + myPlayer.getName() + "  ");
+        System.out.println("  You win!!");
+        System.out.println("-------------------" + myPlayer.nameSize() +"\n");
+    }
+
+    public void printLoss(Player myPlayer){
+        System.out.println("\n-------------------------" + myPlayer.nameSize());
+        System.out.println("  Tough luck " + myPlayer.getName() + "  :(");
+        System.out.println("  You lost this time around!!");
+        System.out.println("-------------------------" + myPlayer.nameSize() + "\n");
+    }
+
+    public void printEnd(){
+        pause(2);
+        System.out.println("-------------------");
+        System.out.println("|    Game Over     |");
+        System.out.println("-------------------");
+    }
 
 
-
-    public static void pause(int secs){
+    public void pause(int secs){
         //pause for suspense
         try
         {
-            Thread.sleep(secs*10);
+            Thread.sleep(secs*1000);
         }
         catch(InterruptedException ex)
         {
@@ -216,11 +235,14 @@ public class BlackjackController {
         }
     }
 
-    public static boolean isPlayAgain() {
+    public boolean isPlayAgain() {
         return playAgain;
     }
 
-    public static void setPlayAgain(boolean newGame) {
+    public void setPlayAgain(boolean newGame) {
         playAgain = newGame;
     }
+
+
+
 }

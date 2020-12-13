@@ -46,6 +46,16 @@ public class Player {
     public void setPotValue(int potValue) {
         this.potValue = potValue;
     }
+
+    // a method to help with the printing length - only aesthetic use
+    public String nameSize(){
+        String name_size = "-";
+        for (int i = 0; i < getName().length(); i++) {
+            name_size = name_size + "-";
+        }
+        return name_size;
+    }
+
 }
 
 
