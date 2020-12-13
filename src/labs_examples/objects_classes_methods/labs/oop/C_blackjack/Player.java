@@ -5,11 +5,13 @@ public class Player {
     private String name;
     private Hand hand;
     private int potValue;
+    private int handsPlayed;
 
     public Player(){
         name = "default Player";
         hand = new Hand();
         potValue = 100;
+        handsPlayed = 0;
     }
 
     public  Player(String name, int potValue){
@@ -56,6 +58,13 @@ public class Player {
         return name_size;
     }
 
+    public int getHandsPlayed() {
+        return handsPlayed;
+    }
+
+    public void setHandsPlayed(int handsPlayed) {
+        this.handsPlayed = handsPlayed;
+    }
 }
 
 
