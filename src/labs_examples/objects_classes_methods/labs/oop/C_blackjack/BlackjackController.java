@@ -8,11 +8,8 @@ public class BlackjackController {
     public static void main(String[] args) throws InterruptedException {
 
         BlackjackController controller = new BlackjackController();
-
-
         // create user player
         Player myPlayer = createUserPlayer();
-
         // create computer player
         int computerPotValue = myPlayer.getPotValue();
         Player comPlayer = new Player("dealer", computerPotValue);
@@ -49,6 +46,9 @@ public class BlackjackController {
         dealInitialCards(myPlayer, comPlayer, myDeck);
 
         printInitialGameStatus(myPlayer, comPlayer);
+
+        //end round if BlackJack
+        if (IsBlackJack(myPlayer)) roundOver(myPlayer, comPlayer, bet);
 
         dealAdditionalUserCards(myPlayer, myDeck);
 
@@ -107,6 +107,14 @@ public class BlackjackController {
         // Players hand
         boolean stand = false;
         while ((!stand) && (!myPlayer.getHand().busted())) {
+
+            if (myPlayer.getHand().returnScore() == 21)
+            {
+                System.out.println("\nYour hand value is 21!); ");
+                System.out.println("Dealer's turn:");
+                return;
+            }
+
             System.out.println();
             System.out.println("\nDo you want another card (y/n) ?");
             Scanner scan2 = new Scanner(System.in);
@@ -156,7 +164,6 @@ public class BlackjackController {
         System.out.println("Round " + myPlayer.getHandsPlayed());
         System.out.println("----------\n");
     }
-
 
     public void roundOver(Player myPlayer, Player comPlayer, int bet) {
         boolean win = true;
@@ -305,6 +312,16 @@ public class BlackjackController {
                 "                                     $$$$$$$$$$\"      \n" +
                 "                                      \"$$$\"\"\"\"\n");
         System.out.println("You've lost but don't worry");
+    }
+
+    public boolean IsBlackJack(Player myPLayer){
+        int card1 = myPLayer.getHand().getCards().get(0).getCardValue();
+        int card2 = myPLayer.getHand().getCards().get(1).getCardValue();
+        if (((card1 == 10) && (card2 == 1)) || ((card1 == 1) && (card2 == 10))){
+            System.out.println("\n BLACKJACK!!");
+            return true;
+        }
+        else return false;
     }
 
 }
