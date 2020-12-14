@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Hand {
 
     ArrayList<Card> cards;
-    int handValue;
+    private int handValue;
 
     public Hand(){
         cards = new ArrayList<Card>();
@@ -19,8 +19,9 @@ public class Hand {
             Card tempCard = cards.get(i);
             tempSum += tempCard.getCardValue();
         }
+        setHandValue(tempSum);
 
-        return handValue = tempSum;
+        return tempSum;
     }
 
     public boolean busted(){

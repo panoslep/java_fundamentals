@@ -174,14 +174,14 @@ public class BlackjackController {
         } else if (comPlayer.getHand().busted()) {
             System.out.println("\n The dealer went bust!");
         } else {
-            System.out.println(myPlayer.getName() + "'s hand value : " + myPlayer.getHand().handValue);
-            System.out.println("Dealer's hand value : " + comPlayer.getHand().handValue);
+            System.out.println(myPlayer.getName() + "'s hand value : " + myPlayer.getHand().getHandValue());
+            System.out.println("Dealer's hand value : " + comPlayer.getHand().getHandValue());
         }
         //pause for suspense
         pause(2);
 
         //check if dealer's cards are higher:
-        if ((comPlayer.getHand().handValue >= myPlayer.getHand().handValue) &&
+        if ((comPlayer.getHand().getHandValue() >= myPlayer.getHand().getHandValue()) &&
                 (!comPlayer.getHand().busted())) {
             win = false;
         }
