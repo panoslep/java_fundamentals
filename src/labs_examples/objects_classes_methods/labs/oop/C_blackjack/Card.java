@@ -2,7 +2,7 @@ package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 
 public class Card {
 
-    private char[] suit = new char[]{'a', 'b', 'c', 'd' };//'♠', '♦', '♥', '♣'
+    private char[] suit = new char[]{'♠', '♦', '♥', '♣'};
     private char[] rank = new char[]{'A', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K' }; // 0 represents 10
     private String symbol;
     private int cardValue;

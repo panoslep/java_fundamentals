@@ -79,7 +79,7 @@ public class BlackjackController {
             //pause for suspense
             pause(3);
 
-            System.out.print("Dealer hits");
+            System.out.print("\nDealer hits");
             myDeck.deal(comPlayer);
             System.out.println();
             for (int i = 0; i < comPlayer.getHand().cards.size(); i++) {
@@ -121,7 +121,8 @@ public class BlackjackController {
             String giveMeCard = scan2.nextLine();
             if (giveMeCard.equals("n")) {
                 stand = true;
-                System.out.println("You stand. Your hand value is: " + myPlayer.getHand().returnScore());
+                System.out.println("\nYou stand.");
+                System.out.println("Your hand value is: " + myPlayer.getHand().returnScore());
                 System.out.println("Dealer's turn:");
             } else if (giveMeCard.equals("y")) {
                 myDeck.deal(myPlayer);
@@ -139,7 +140,7 @@ public class BlackjackController {
     private void printInitialGameStatus(Player myPlayer, Player comPlayer) {
         // what the player can see
         System.out.println("Dealer:");
-        int visScore = comPlayer.getHand().returnScore() - comPlayer.getHand().cards.get(1).getCardValue();
+        int visScore = comPlayer.getHand().cards.get(0).getCardValue();
         comPlayer.getHand().cards.get(0).printCard();
         System.out.print("| ? |");
         System.out.print("   ---- hand value: " + visScore);
@@ -147,7 +148,7 @@ public class BlackjackController {
         System.out.println(myPlayer.getName() + ":");
         myPlayer.getHand().cards.get(0).printCard();
         myPlayer.getHand().cards.get(1).printCard();
-        System.out.print("   ---- hand value: " + myPlayer.getHand().returnScore() + "\n");
+        System.out.print("   ---- hand value: " + printSoft(myPlayer) + myPlayer.getHand().returnScore() + "\n");
     }
 
     private void dealInitialCards(Player myPlayer, Player comPlayer, Deck myDeck) {
@@ -174,14 +175,15 @@ public class BlackjackController {
         } else if (comPlayer.getHand().busted()) {
             System.out.println("\n The dealer went bust!");
         } else {
-            System.out.println(myPlayer.getName() + "'s hand value : " + myPlayer.getHand().getHandValue());
-            System.out.println("Dealer's hand value : " + comPlayer.getHand().getHandValue());
+            System.out.println("\n Dealer Stands.");
+            System.out.println("\n" + myPlayer.getName() + "'s hand value : " + myPlayer.getHand().returnScore());
+            System.out.println("Dealer's hand value : " + comPlayer.getHand().returnScore());
         }
         //pause for suspense
         pause(2);
 
         //check if dealer's cards are higher:
-        if ((comPlayer.getHand().getHandValue() >= myPlayer.getHand().getHandValue()) &&
+        if ((comPlayer.getHand().returnScore() >= myPlayer.getHand().returnScore()) &&
                 (!comPlayer.getHand().busted())) {
             win = false;
         }
@@ -199,10 +201,14 @@ public class BlackjackController {
 
         pause(2);
 
-        if (myPlayer.getPotValue() == 0)
+        if (myPlayer.getPotValue() == 0) {
             printLostGame();
-        else if (comPlayer.getPotValue() == 0)
+            setPlayAgain(false);
+        }
+        else if (comPlayer.getPotValue() == 0) {
             printWinGame();
+            setPlayAgain(false);
+        }
         else
             askNewRound();
 
@@ -322,6 +328,15 @@ public class BlackjackController {
             return true;
         }
         else return false;
+    }
+
+    public String printSoft(Player myPlayer){
+        String print;
+        if (myPlayer.getHand().getAcesInHand() == 1)
+            print = "soft";
+        else
+            print = "";
+        return print;
     }
 
 }

@@ -5,30 +5,46 @@ import java.util.ArrayList;
 public class Hand {
 
     ArrayList<Card> cards;
-    private int handValue;
+    //private int handValue;
+    private int acesInHand;
 
     public Hand(){
         cards = new ArrayList<Card>();
-        handValue = 0;
+        acesInHand = 0;
     }
 
     public int returnScore()
     {
-        int tempSum = 0;
+        int score = 0;
+        setAcesInHand(0);
         for (int i = 0; i < cards.size(); i++) {
             Card tempCard = cards.get(i);
-            tempSum += tempCard.getCardValue();
+            score += tempCard.getCardValue();
+            if (tempCard.getCardValue() == 1)
+                setAcesInHand(getAcesInHand()+1); //no of aces at hand
         }
-        setHandValue(tempSum);
 
-        return tempSum;
+        //Soft hand game
+        switch (getAcesInHand()){
+            case 1:
+                if ((score + 10) < 22) score += 10;
+                break;
+            case 2:
+            case 3:
+                score += 10;
+                break;
+            case 4:
+                score += 20;
+                break;
+            default:
+                break;
+        }
+
+        return score;
     }
 
     public boolean busted(){
-        if (returnScore() > 21)
-            return true;
-        else
-            return false;
+        return returnScore() > 21;
     }
 
     public ArrayList<Card> getCards() {
@@ -39,11 +55,11 @@ public class Hand {
         this.cards = cards;
     }
 
-    public int getHandValue() {
-        return handValue;
+    public int getAcesInHand() {
+        return acesInHand;
     }
 
-    public void setHandValue(int handValue) {
-        this.handValue = handValue;
+    public void setAcesInHand(int acesInHand) {
+        this.acesInHand = acesInHand;
     }
 }
