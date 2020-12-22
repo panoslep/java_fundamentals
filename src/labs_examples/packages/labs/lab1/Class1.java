@@ -14,7 +14,7 @@ public class Class1 {
 
         System.out.println("Attempt to access protected class:");
         try {
-   //        object2.protectedMehod();
+   //        object2.protectedMethod();
         }
         catch(Exception e) {
             System.out.println("The method was not accessible");
