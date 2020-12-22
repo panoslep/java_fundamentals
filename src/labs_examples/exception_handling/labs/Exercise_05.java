@@ -6,3 +6,4 @@ package labs_examples.exception_handling.labs;
  *      Demonstrate how to throw an exception.
  *
  */
+
