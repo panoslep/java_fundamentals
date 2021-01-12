@@ -21,6 +21,7 @@ public class Exercise_02 {
             catch (IndexOutOfBoundsException exception2){
                 System.out.println("index: " + i + " is out of bounds");
             }
+
         }
     }
 }

@@ -32,22 +32,45 @@ public class Exercise_07 {
             checkAdulthood(age);
             System.out.println("Access granted");
         }
-        catch (customException exc) {
-            System.out.println(exc.toString());
+        catch (CustomException exc) {
+            //System.out.println(exc.toString());
+            exc.printStackTrace();
         }
+        System.out.println("here");
     }
 
-    public static void checkAdulthood(double age) throws customException {
+    public static double divide(double a, double b) throws ArithmeticException{
+        return a/b;
+    }
+
+    public static void checkAdulthood(int age) throws CustomException{
         if(age < 18)
-            throw new customException();
+            throw new CustomException(age);
     }
 }
 
-class customException extends Exception{
-        String message;
+class CustomException extends Exception{
 
-        @Override
-        public String toString(){
-            return "Sorry, access denied. Come back in a few years.";
+    private int age;
+
+    public CustomException(int age){
+        this.age = age;
+    }
+
+    public CustomException(String message){
+        super(message);
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    @Override
+    public String toString(){
+        if (age > 0){
+            return age + " is too young. Access denied";
         }
+
+        return "Sorry, access denied. " + getMessage()+ " is too young.";
+    }
 }
