@@ -12,33 +12,50 @@ package labs_examples.input_output.labs;
  *
  */
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 
 class EncryptionExample {
-    public static void main(String[] argv) throws Exception {
+    public static void main(String[] argv){
 
         String filePathIn = "C:\\Users\\Matlab\\Documents\\CodingNomads\\labs\\online-java-fundamentals\\src\\labs_examples\\input_output\\labs\\ex2_original";
         String filePathOut = "C:\\Users\\Matlab\\Documents\\CodingNomads\\labs\\online-java-fundamentals\\src\\labs_examples\\input_output\\labs\\ex2_encrypted";
 
-        BufferedReader br = new BufferedReader(new FileReader(filePathIn));
-        BufferedWriter bw = new BufferedWriter(new FileWriter(filePathOut));
-        int i;
-        do {
-            i = br.read();
-            if (i != -1) {
-                char j 
-                if (Character.isLowerCase((char) i))
-                    bw.write(((char) i));
-                else if (Character.isUpperCase((char) i))
-                    bw.write(((char) i));
-                else
-                    bw.write((char) i);
+        try (BufferedReader br = new BufferedReader(new FileReader(filePathIn));
+             BufferedWriter bw = new BufferedWriter(new FileWriter(filePathOut))){
+
+            String line;
+
+
+            while((line = br.readLine()) != null){
+                line = line.replace('-' ,'%');
+                line = line.replace('a', '-');
+                line = line.replace('~' , '£');
+                line = line.replace('e', '~');
+                bw.write(line);
+                bw.newLine();
             }
-        } while (i != -1);
-        br.close();
-        bw.close();
+
+        }catch (IOException exception){
+            System.out.println(exception.getMessage());
+        }
+        System.out.println("file encrypted");
+        System.out.println("decrypting file...");
+
+        //to do: read in encrypted file , decrypt it, print the content to the console
+        try (BufferedReader br2 = new BufferedReader(new FileReader(filePathOut))){
+            String line2;
+
+            while((line2 = br2.readLine()) != null){
+
+                line2 = line2.replace('-', 'a');
+                line2 = line2.replace('%' ,'-');
+                line2 = line2.replace('~' , 'e');
+                line2 = line2.replace('£', '~');
+                System.out.println(line2);
+            }
+
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
     }
 }

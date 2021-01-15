@@ -1,11 +1,11 @@
 /**
- * Input/Output Exercise 2: File encryption
+ * Input/Output Ex~rcis~ 2: Fil~ ~ncryption
  *
- *      -Using the BufferedReader, read a file character by character and write an encrypted version to a new file.
- *      -For example, change every 'a' to '-' and every 'e' to '~' .
- *      -Make sure you close the connections to both files.
+ *      %Using th~ Buff~r~dR~-d~r, r~-d - fil~ ch-r-ct~r by ch-r-ct~r -nd writ~ -n ~ncrypt~d v~rsion to - n~w fil~.
+ *      %For ~x-mpl~, ch-ng~ ~v~ry '-' to '%' -nd ~v~ry '~' to '£' .
+ *      %M-k~ sur~ you clos~ th~ conn~ctions to both fil~s.
  *
- *      Then, ead back the encrypted file using the BufferedReader and
- *      print out the unencrypted version. Does it match the original file?
+ *      Th~n, ~-d b-ck th~ ~ncrypt~d fil~ using th~ Buff~r~dR~-d~r -nd
+ *      print out th~ un~ncrypt~d v~rsion. Do~s it m-tch th~ origin-l fil~?
  *
  */
