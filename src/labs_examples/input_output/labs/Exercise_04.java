@@ -38,7 +38,7 @@ public class Exercise_04 {
             }
 
             for(Car car : cars) {
-                bw.write(car.toString());
+                bw.write(car.getCsvString());
                 bw.newLine();
             }
 

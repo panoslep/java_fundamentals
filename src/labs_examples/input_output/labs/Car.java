@@ -58,4 +58,8 @@ public class Car {
                 ", price=" + price +
                 '}';
     }
+
+    public String getCsvString(){
+        return model + "," + year + "," + mileage + "," + price;
+    }
 }

@@ -1,5 +1,7 @@
 package labs_examples.generics.labs;
 
+import java.util.ArrayList;
+
 /**
  * Generics Exercise 1:
  *
@@ -8,3 +10,13 @@ package labs_examples.generics.labs;
  *          dynamic usage.
  */
 
+class Generic<E>{
+
+    ArrayList<E> list = new ArrayList();
+
+
+    void printArray(ArrayList<E> list){
+        System.out.print(list);
+    }
+
+}
