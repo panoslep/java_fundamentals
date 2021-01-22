@@ -1,7 +1,8 @@
 package labs_examples.generics.labs;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import javafx.scene.chart.ScatterChart;
+
+import java.util.*;
 
 /**
  * Generics Exercise 3:
@@ -17,3 +18,52 @@ import java.util.Collection;
  *      4) Write a generic method to find the largest element within the range (begin, end) of a list.
  *
  */
+
+public class Exercise_03 {
+
+
+    public static < T, V extends Number> double doubleSum( T arg1, V arg2 ) {
+
+        double sum = (double) arg2.doubleValue() + (double) arg2.doubleValue();
+        return sum;
+    }
+
+
+    public static <E> int palindromes(List<E> collection){
+        int palElements = 0;
+        try {
+            for (E x : collection) {
+                String str = x.toString().toLowerCase();
+                boolean isPalindrome = true;
+
+                for (int i = 0; i < str.length()/2-1; i++){
+                    if (!((str.charAt(i)) == (str.charAt(str.length()-1-i)))){
+                        isPalindrome = false;
+                        break;
+                    }
+                }
+                if (isPalindrome) {
+                    System.out.println("\"" + x + "\" is a palindrome.");
+                    palElements++;
+                }
+            }
+        }catch(Exception exp){
+            System.out.println("Something went wrong.");
+        }
+        return palElements;
+    }
+
+
+
+    public static void main(String args[]) {
+
+        Integer arg1 = 5;
+        Float arg2 = 5.5f;
+        List<String> listString = Arrays.asList("kayak", "panos", "ryan", "AManAPLanACanalPanama");
+
+        System.out.println("\n" + arg1 + " + " + arg2 + " = " + doubleSum(arg1, arg2));
+        System.out.println();
+        int elements = palindromes(listString);
+        System.out.println(elements + " elements in the list are palindromes");
+    }
+}
