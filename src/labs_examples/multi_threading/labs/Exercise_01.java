@@ -41,28 +41,28 @@ class Exercise_01 implements Runnable {
 
 class Exercise_01b implements Runnable {
 
-    Thread thread;
+    Thread thread2;
 
     //constructor
     public Exercise_01b(String name) {
-        thread = new Thread(this, name);
+        thread2 = new Thread(this, name);
     }
 
     // Entry point of thread.
     @Override
     public void run() {
-        System.out.println(thread.getName() + " starting.");
+        System.out.println(thread2.getName() + " starting.");
         try {
             for(int count=0; count < 10; count++) {
                 Thread.sleep(400);
-                System.out.println("In " + thread.getName() +
+                System.out.println("In " + thread2.getName() +
                         ", count is " + count);
             }
         }
         catch(InterruptedException exc) {
-            System.out.println(thread.getName() + " interrupted.");
+            System.out.println(thread2.getName() + " interrupted.");
         }
-        System.out.println(thread.getName() + " terminating.");
+        System.out.println(thread2.getName() + " terminating.");
     }
 }
 
@@ -88,32 +88,11 @@ class UseThreads {
         Exercise_01b newThread2 = new Exercise_01b("Child #2");
         Exercise_01b newThread3 = new Exercise_01b("Child #3");
 
-        newThread1.run();
-        newThread2.run();
-        newThread3.run();
+        newThread1.thread2.start();
+        newThread2.thread2.start();
+        newThread3.thread2.start();
         System.out.println("2nd test: Main thread terminating.");
 
 
     }
 }
-
-
-//    // First, construct a MyThread object.
-//    labs_examples.multi_threading.labs.Exercise_01 mt;
-//        mt = new labs_examples.multi_threading.labs.Exercise_01("Child #1");
-//
-//                // Next, construct a thread from that object.
-//                Thread newThrd = new Thread(mt);
-//
-//                // Finally, start execution of the thread.
-//                newThrd.start();
-//
-//                for(int i=0; i<50; i++) {
-//        System.out.print(".");
-//        try {
-//        Thread.sleep(100);
-//        }
-//        catch(InterruptedException exc) {
-//        System.out.println("Main thread interrupted.");
-//        }
-//        }
