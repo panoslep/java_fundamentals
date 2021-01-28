@@ -41,28 +41,24 @@ class Exercise_01 implements Runnable {
 
 class Exercise_01b implements Runnable {
 
-    Thread thread2;
 
-    //constructor
-    public Exercise_01b(String name) {
-        thread2 = new Thread(this, name);
-    }
+
 
     // Entry point of thread.
     @Override
     public void run() {
-        System.out.println(thread2.getName() + " starting.");
+        System.out.println(Thread.currentThread().getName() + " starting.");
         try {
             for(int count=0; count < 10; count++) {
                 Thread.sleep(400);
-                System.out.println("In " + thread2.getName() +
+                System.out.println("In " + Thread.currentThread().getName() +
                         ", count is " + count);
             }
         }
         catch(InterruptedException exc) {
-            System.out.println(thread2.getName() + " interrupted.");
+            System.out.println(Thread.currentThread().getName() + " interrupted.");
         }
-        System.out.println(thread2.getName() + " terminating.");
+        System.out.println(Thread.currentThread().getName() + " terminating.");
     }
 }
 
@@ -84,13 +80,17 @@ class UseThreads {
         //--------------------------------
         System.out.println("2nd test: Main thread starting.");
 
-        Exercise_01b newThread1 = new Exercise_01b("Child #1");
-        Exercise_01b newThread2 = new Exercise_01b("Child #2");
-        Exercise_01b newThread3 = new Exercise_01b("Child #3");
+        Exercise_01b newThread1 = new Exercise_01b();
+        Exercise_01b newThread2 = new Exercise_01b();
+        Exercise_01b newThread3 = new Exercise_01b();
 
-        newThread1.thread2.start();
-        newThread2.thread2.start();
-        newThread3.thread2.start();
+        Thread t = new Thread(newThread1, "no1");
+        t.start();
+        Thread t2 = new Thread(newThread2, "no2");
+        t2.start();
+        Thread t3 = new Thread(newThread3, "no3");
+        t3.start();
+
         System.out.println("2nd test: Main thread terminating.");
 
 

@@ -20,9 +20,9 @@ import java.util.*;
 public class Exercise_03 {
 
 
-    public static < T, V extends Number> double doubleSum( T arg1, V arg2 ) {
+    public static < T extends Number,  V extends Number> double doubleSum( T arg1, V arg2 ) {
 
-        double sum = (double) arg2.doubleValue() + (double) arg2.doubleValue();
+        double sum = (double) arg1.doubleValue() + (double) arg2.doubleValue();
         return sum;
     }
 
@@ -74,77 +74,17 @@ public class Exercise_03 {
             System.out.print(x + " ");
         }
         System.out.println();
-        System.out.println("The largest element is : " +
-                Collections.max(list));
-    }
-
-//    public static <E> E largestElement2(ArrayList<E> list, int begin, int end) {
-//        E tempElement = list.get(0);
-//        int index = 0;
-//        try {
-//            if (tempElement instanceof Number) {
-//                double max = (double) list.get(begin); //Double.NEGATIVE_INFINITY;
-//                double max = 0;
-//                for (int i = begin; i <= end; i++) {
-//                    if ((double) list.get(i) > max) {
-//                        max = (double) list.get(i);
-//                        index = i;
-//                    }
-//                }
-//            } else if (tempElement instanceof String) {
-//                int max = 0;
-//                for (int i = begin; i <= end; i++) {
-//                    int len = list.get(i).toString().length();
-//                    if (len > max) {
-//                        max = len;
-//                        index = i;
-//                    }
-//                }
-//            } else {
-//                System.out.println("your list consists of non-comparable elements");
-//                return null;
-//            }
-//        } catch (Exception exp2) {
-//            System.out.println("Something went wrong.");
-//            return null;
-//        }
-//        return list.get(index);
-//    }
-
-
-//    public static <E extends Number> E largestElement3(ArrayList<E> list, int begin, int end) {
-//        int index = 0;
-//        try {
-//            double max = (double) list.get(begin); //Double.NEGATIVE_INFINITY;
-//            for (int i = begin; i <= end; i++) {
-//                if ((double) list.get(i) > max) {
-//                    max = (double) list.get(i);
-//                    index = i;
-//                }
-//            }
-//        } catch (Exception exp2) {
-//            System.out.println("Something went wrong.");
-//            return null;
-//        }
-//        return list.get(index);
-//    }
-
-    public static String largestElement3(ArrayList<String> list, int begin, int end) {
-        int index = 0;
-        try {
-            int max = 0;
-            for (int i = begin; i <= end; i++) {
-                int len = list.get(i).toString().length();
-                if (len > max) {
-                    max = len;
-                    index = i;
+        if (list.get(0).getClass().getTypeName().equalsIgnoreCase("java.lang.String")) {
+            String longest = (String) list.get(0);
+            for (String s : (ArrayList<String>) list) {
+                if (s.length() > longest.length()) {
+                    longest = s;
                 }
             }
-        } catch (Exception exp3) {
-            System.out.println("Something went wrong.");
-            return null;
+            System.out.println("The largest element is : " + longest);
         }
-        return list.get(index);
+        else
+            System.out.println("The largest element is : " + Collections.max(list));
     }
 
 
