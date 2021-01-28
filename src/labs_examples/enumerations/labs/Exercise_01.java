@@ -12,12 +12,12 @@ enum Season {
     AUTUMN, WINTER, SPRING, SUMMER
 }
 
-enum Month {
+enum MonthOfYear {
     APRIL(30), AUGUST(31), DECEMBER(31), FEBRUARY(28),
     JANUARY(31), JULY(31), JUNE(30), MARCH(31),
     MAY(31), NOVEMBER(30), OCTOBER(31), SEPTEMBER(30);
 
-    Month(int daysInMonth) {
+    MonthOfYear(int daysInMonth) {
         this.daysInMonth = daysInMonth;
     }
 
@@ -30,7 +30,7 @@ enum Month {
 
 public class Exercise_01 {
     public static void main(String[] args) {
-        for (Season mySeason : Season.values())
+        for (Season mySeason : Season.values()) {
             switch (mySeason) {
                 case AUTUMN:
                     System.out.println("In " + mySeason.toString().toLowerCase() + " the weather " +
@@ -54,12 +54,20 @@ public class Exercise_01 {
             }
         }
 
-        for (Month month : Month.values()) {
+        MonthOfYear aMonth = MonthOfYear.APRIL;
+        System.out.println(aMonth + " has " + aMonth.getDaysInMonth() + " days.");
 
-
+        for (MonthOfYear month : MonthOfYear.values()) {
+            System.out.println(month + " has " + month.getDaysInMonth() + "days.");
         }
-
     }
+}
+
+
+
+
+
+
 
 
 
