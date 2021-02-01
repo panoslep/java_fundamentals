@@ -17,4 +17,64 @@ package labs_examples.interfaces.labs;
  *          playMusic() and turnOff().
  */
 
+interface Vehicle {
+    void turnOn();
+    void brake();
+    void turnOff();
+}
 
+class Tractor implements Vehicle {
+    @Override
+    public void turnOn() {
+        System.out.println("Tractor turns on.");
+    }
+
+    @Override
+    public void brake() {
+        System.out.println("Tractor brakes.");
+    }
+
+    @Override
+    public void turnOff() {
+        System.out.println("Tractor turns off.");
+    }
+}
+
+
+class Scooter implements Vehicle {
+    @Override
+    public void turnOn() {
+        System.out.println("Scooter turns on.");
+    }
+
+    @Override
+    public void brake() {
+        System.out.println("Scooter brakes.");
+    }
+
+    @Override
+    public void turnOff() {
+        System.out.println("Scooter turns off.");
+    }
+}
+
+
+class  Bulldozer extends Tractor{
+    // Can we Override?
+//    @Override
+}
+
+public class InterfaceExercise_01 {
+    public static void main(String[] args) {
+        Tractor tractor = new Tractor();
+        tractor.turnOn();
+        tractor.brake();
+        tractor.turnOff();
+
+        Scooter scooter = new Scooter();
+        scooter.turnOn();
+        scooter.brake();
+        scooter.turnOff();
+
+    }
+}
