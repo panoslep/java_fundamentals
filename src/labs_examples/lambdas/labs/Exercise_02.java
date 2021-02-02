@@ -2,9 +2,7 @@ package labs_examples.lambdas.labs;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.BinaryOperator;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.function.*;
 
 /**
  * Lambdas Exercise 2:
@@ -43,12 +41,23 @@ public class Exercise_02 {
         int distance = 10;
         Function<Integer, Double> inverseSquare = a -> (1.0 / (a * a));
 
-
-        // apply the function to get the result
         System.out.println("The inverse square of " + distance + " is: ");
         System.out.println(inverseSquare.apply(distance));
 
+        //IntSupplier
+        IntSupplier myIntSupplier = () -> (int) (Math.random() * 10);
+        System.out.println(" A random int is : ");
+        System.out.println(myIntSupplier.getAsInt());
+
+        //DoubleSupplier
+        DoubleSupplier myDoubleSupplier = () -> Math.random();
+        System.out.println(" A random double is : ");
+        System.out.println(myDoubleSupplier.getAsDouble());
+
 
         
+
+
+
     }
 }
