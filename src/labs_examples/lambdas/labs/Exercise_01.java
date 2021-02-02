@@ -1,6 +1,8 @@
 package labs_examples.lambdas.labs;
 import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.*;
 
 /**
@@ -61,6 +63,27 @@ public class Exercise_01 {
         int y =6;
         System.out.println("sum of " + x + " and " + y + " is : " + sum.getType(x,y));
         System.out.println("product of " + x + " and " + y + " is : " + product.getType(x,y));
+
+
+        //Predicate
+        /* create a list of strings */
+        List<String> names = Arrays.asList("Panos","Ryan","Panos and Ryan","all and all","all or nothing");
+        Predicate<String> p = (s)->s.contains("and");
+
+        /* Iterate through the list */
+        for (String st:names) {
+            /* call the test method */
+            if (p.test(st)) {
+                System.out.println(st);
+            }
+        }
+
+        //Binary Operator
+        int val_1 = 5;
+        int val_2 = 10;
+        BinaryOperator<Integer> binaryOperator = (v1, v2) -> v1 * v2;
+        System.out.println(binaryOperator.apply(val_1, val_2));
+
     }
 }
 
