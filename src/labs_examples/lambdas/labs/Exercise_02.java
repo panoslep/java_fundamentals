@@ -1,5 +1,7 @@
 package labs_examples.lambdas.labs;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.*;
@@ -79,7 +81,18 @@ public class Exercise_02 {
         if (headsOrTails.getAsBoolean()) System.out.println("Heads");
         else System.out.println("Tails");
 
-        // 9. 
+        // 9. UnaryOperator<T>
+        double fahrenheit = 100;
+        UnaryOperator<Double> fahrenheit2Celcius = (d) -> ((d - 32) / 1.8);
+        double celsius = fahrenheit2Celcius.apply(fahrenheit);
+        System.out.println(fahrenheit + " degrees Fahrenheit equals " + celsius + " degrees Celsius");
 
+        // 10. Supplier<T>
+        Supplier<LocalDateTime> timeNow = () -> LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+
+        LocalDateTime time = timeNow.get();
+        System.out.println("What's the time?");
+        System.out.println("It's " + dtf.format(time));
     }
 }
