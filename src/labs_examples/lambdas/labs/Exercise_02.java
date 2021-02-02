@@ -55,8 +55,25 @@ public class Exercise_02 {
         System.out.println(myDoubleSupplier.getAsDouble());
 
 
-        
+        //intPredicate
+        IntPredicate largerThan10 = (i) -> (i > 10);
+        System.out.println("The following numbers are larger than 10 :");
+        System.out.println();
+        for (int ind = 0 ; ind <= 20; ind+=3) {
+            if (largerThan10.test(ind))
+                System.out.print(ind + " ");
+        }
+        System.out.println();
 
+        //ToIntBiFunction<T,U>
+        String word1 = "nice";
+        String word2 = "day";
+        ToIntBiFunction<String, String> wordlength = (s1,s2) -> s1.length() + s2.length();
+        System.out.println("I'll tell you 2 words: ");
+        System.out.println(word1 + " " + word2);
+        System.out.println("Combined they have " + wordlength.applyAsInt(word1, word2) + " letters");
+
+        
 
 
     }
