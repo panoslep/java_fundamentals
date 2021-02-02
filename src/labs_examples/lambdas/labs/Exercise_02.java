@@ -15,7 +15,7 @@ import java.util.function.*;
 public class Exercise_02 {
     public static void main(String[] args) {
 
-        //Predicate
+        // 1. Predicate
         /* create a list of integer - Test for Even */
         List<Integer> nums = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9 , 10);
         Predicate<Integer> p = (i)-> (i % 2 == 0);
@@ -29,7 +29,7 @@ public class Exercise_02 {
             }
         }
 
-        //Binary Operator
+        // 2. Binary Operator
         double radius = 5;
         double height = 10;
         BinaryOperator<Double> cylinderVolume = (v1, v2) -> 3.14158 * v1 * v2 * v2;
@@ -37,25 +37,25 @@ public class Exercise_02 {
         System.out.println("Cylinder volume:");
         System.out.println(cylinderVolume.apply(radius, height));
 
-        //Function
+        // 3. Function
         int distance = 10;
         Function<Integer, Double> inverseSquare = a -> (1.0 / (a * a));
 
         System.out.println("The inverse square of " + distance + " is: ");
         System.out.println(inverseSquare.apply(distance));
 
-        //IntSupplier
+        // 4. IntSupplier
         IntSupplier myIntSupplier = () -> (int) (Math.random() * 10);
         System.out.println(" A random int is : ");
         System.out.println(myIntSupplier.getAsInt());
 
-        //DoubleSupplier
+        // 5. DoubleSupplier
         DoubleSupplier myDoubleSupplier = () -> Math.random();
         System.out.println(" A random double is : ");
         System.out.println(myDoubleSupplier.getAsDouble());
 
 
-        //intPredicate
+        // 6. intPredicate
         IntPredicate largerThan10 = (i) -> (i > 10);
         System.out.println("The following numbers are larger than 10 :");
         System.out.println();
@@ -65,7 +65,7 @@ public class Exercise_02 {
         }
         System.out.println();
 
-        //ToIntBiFunction<T,U>
+        // 7. ToIntBiFunction<T,U>
         String word1 = "nice";
         String word2 = "day";
         ToIntBiFunction<String, String> wordlength = (s1,s2) -> s1.length() + s2.length();
@@ -73,8 +73,13 @@ public class Exercise_02 {
         System.out.println(word1 + " " + word2);
         System.out.println("Combined they have " + wordlength.applyAsInt(word1, word2) + " letters");
 
-        
+        // 8. BooleanSupplier
+        BooleanSupplier headsOrTails = () -> (Math.random() >= 0.5);
+        System.out.println("Heads or Tails ? ");
+        if (headsOrTails.getAsBoolean()) System.out.println("Heads");
+        else System.out.println("Tails");
 
+        // 9. 
 
     }
 }
