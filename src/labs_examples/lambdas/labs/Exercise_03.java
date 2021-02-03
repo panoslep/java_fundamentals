@@ -1,6 +1,7 @@
 package labs_examples.lambdas.labs;
 
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
 /**
  * Lambdas Exercise 3:
@@ -19,12 +20,20 @@ public class Exercise_03 {
         String myString = connect.apply("the", "end");
         System.out.println(myString);
 
-        
+        //call an instance of a method
+        Exercise_03 ex3 = new Exercise_03();
+        Consumer<String> c = ex3 :: printSomething;
+        c.accept("biceps");
     }
 
     public static String connectWords(String s1, String s2) {
         s1 = s1.substring(0, 1).toUpperCase() + s1.substring(1);
         String string = s1 + " " + s2 + ".";
         return string;
+    }
+
+    public void printSomething(String str) {
+        String something = "Hey, this is a printout of your word: ";
+        System.out.println(something + str);
     }
 }
