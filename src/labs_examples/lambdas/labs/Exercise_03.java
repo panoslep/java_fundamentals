@@ -1,6 +1,8 @@
 package labs_examples.lambdas.labs;
 
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
@@ -32,6 +34,7 @@ public class Exercise_03 {
         FootballPlayer Messi = playerGenerator.createPlayer("Lionel Messi", 10);
         System.out.println(CR7.toString());
         System.out.println(Messi.toString());
+
     }
 
     public static String connectWords(String s1, String s2) {

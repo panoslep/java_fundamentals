@@ -1,5 +1,8 @@
 package labs_examples.lambdas.labs;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 /**
  * Lambdas Exercise 4:
  *
@@ -22,3 +25,44 @@ package labs_examples.lambdas.labs;
  *      11) Demonstrate the collect() terminal operation to store resulting values into a List
  *      
  */
+
+
+public class Exercise_04 {
+    public static void main(String[] args) {
+
+        /*
+         *      1) Demonstrate the use of the range function to print out the numbers 1 through 15 (inclusive)
+         */
+
+        //***********************************
+        // How do we add space between numbers
+
+
+        IntStream
+                .rangeClosed(1, 15)
+
+                .forEach(System.out::print);
+
+        System.out.println();
+
+        // Would this work somehow? -->
+//        IntStream myIntStream = new IntStream.range(1, 16);
+//        myIntStream.forEach(System.out::print);
+
+
+        //2) Demonstrate the use of the sum function to determine the range of a set of numbers.
+        int sum = IntStream.range(1, 16).sum();
+        System.out.println(sum);
+
+        //3) Demonstrate the use of the map() function to alter each int in a List of Integers,
+        // then use the sum function to get the sum of the modified list
+        Arrays.stream(new int[] {2, 4, 6, 8, 10})  //Create a Stream from an int array
+
+                .map(x -> x / 2);  //Use a Lambda to half each int in the array
+
+                System.out.println(IntStream.sum());
+
+
+
+    }
+}
