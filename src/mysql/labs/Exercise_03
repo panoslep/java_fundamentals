@@ -5,8 +5,17 @@
 *   Now that you have your air travel database all set up and populated, please demonstrate how to:
 *
 *       1.) Query all flights on a specific day
+* SELECT * FROM air_travel.flights WHERE take_off > "2021-09-22 10:00:00" AND take_off < "2021-09-24 10:00:00" ;
 *       2.) Query all flights between two specific cities on a specific day
+*  SELECT * FROM air_travel.flights
+   JOIN destinations d
+   ON flights.destination_id = d.destination_id
+   WHERE d.city = "London";
+
+*
 *       3.) Query all passengers on a specific flight between two specific cities today
+
+
 *       4.) Query the flight information for a specific passenger on a specific flight
 *       5.) Query the passenger information for a specific user on a specific flight yesterday
 *       6.) Query the number of flights between two specific cities this week, month, and year
