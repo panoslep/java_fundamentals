@@ -1,5 +1,7 @@
 package labs_examples.datastructures.linkedlist.labs;
 
+import java.util.LinkedList;
+
 /**
  *      LinkedLists - Exercise_01
  *
@@ -21,3 +23,31 @@ package labs_examples.datastructures.linkedlist.labs;
  *      14) listIterator()
  *      15) clear()
  */
+
+public class Exercise_01 {
+
+    public static void main(String[] args) {
+        // create LinkedList
+        LinkedList<String> myList = new LinkedList<String>();
+
+        // add element
+        myList.add("first element");
+        myList.add("second element");
+        myList.add("third element");
+        myList.add("fourth element");
+
+        //create a second list
+        LinkedList<String> myList2 = new LinkedList<String>();
+
+        // add element to myList2
+        myList2.add("first element of list2");
+        myList2.add("second element of list2");
+        myList2.add("third element of list2");
+
+        //add All method
+        myList.addAll(myList2);
+
+        
+
+    }
+}
