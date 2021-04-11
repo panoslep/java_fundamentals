@@ -1,6 +1,7 @@
 package labs_examples.datastructures.linkedlist.labs;
 
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 /**
  *      LinkedLists - Exercise_01
@@ -36,6 +37,8 @@ public class Exercise_01 {
         myList.add("third element");
         myList.add("fourth element");
 
+        System.out.println(myList);
+
         //create a second list
         LinkedList<String> myList2 = new LinkedList<String>();
 
@@ -46,8 +49,49 @@ public class Exercise_01 {
 
         //add All method
         myList.addAll(myList2);
+        System.out.println(myList);
 
-        
+        //add first and last
+        myList.addFirst("new first element");
+        myList.addLast("new last element");
+
+        System.out.println(myList);
+        System.out.println(myList.getFirst());
+        System.out.println(myList.getLast());
+
+        System.out.println(myList.get(5));
+        myList.set(5, "new 6th element");
+        System.out.println(myList.get(5));
+
+        myList.push("newer first element");
+
+        System.out.println(myList);
+        System.out.println(myList.pop());
+        System.out.println(myList);
+
+        System.out.println(myList.remove(2));
+        System.out.println(myList.contains("second element"));
+        System.out.println(myList.contains("third element"));
+
+        System.out.println(myList);
+        System.out.println(myList.listIterator(5));
+
+
+        //copied this over from google. not exactly sure what it does.
+        // ListIterator
+        ListIterator list_Iter = myList.listIterator(5);
+
+        System.out.println(list_Iter);
+        // Iterating through the created list from the position
+        while(list_Iter.hasNext()){
+            System.out.println(list_Iter.next());
+        }
+
+        // clear list2
+        System.out.println(myList2);
+        myList2.clear();
+        System.out.println(myList2);
+
 
     }
 }
