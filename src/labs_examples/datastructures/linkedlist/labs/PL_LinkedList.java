@@ -75,5 +75,13 @@ public class PL_LinkedList<N> {
         }
     }
 
+    public void printMyList() {
+
+        Node2 iterator = head;
+        while (iterator.next != null) {
+            System.out.println(iterator.data);
+            iterator = iterator.next;
+        }
+    }
 
 }

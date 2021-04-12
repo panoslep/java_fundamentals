@@ -1,5 +1,7 @@
 package labs_examples.datastructures.linkedlist.labs;
 
+import labs_examples.datastructures.linkedlist.examples.CustomLinkedList;
+
 /**
  *      LinkedLists - Exercise_02
  *
@@ -12,3 +14,21 @@ package labs_examples.datastructures.linkedlist.labs;
  *      get() and remove() based by the Node's value, not it's index.
  */
 
+public class Exercise_02 {
+
+    public static void main(String[] args) {
+        PL_LinkedList<Integer> numLinkedList = new PL_LinkedList<>();
+
+        numLinkedList.add(5);
+        numLinkedList.add(15);
+        numLinkedList.add(20);
+        numLinkedList.add(7);
+
+      numLinkedList.printMyList();
+       // System.out.println(myLinkedList.get(0));
+       // System.out.println(myLinkedList.get(1));
+       // System.out.println(myLinkedList.get(2));
+       // System.out.println(myLinkedList.get(3));
+    }
+
+}
