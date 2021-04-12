@@ -19,16 +19,25 @@ public class Exercise_02 {
     public static void main(String[] args) {
         PL_LinkedList<Integer> numLinkedList = new PL_LinkedList<>();
 
-        numLinkedList.add(5);
-        numLinkedList.add(15);
-        numLinkedList.add(20);
-        numLinkedList.add(7);
+        numLinkedList.addEnd(5);
+        numLinkedList.addEnd(15);
+        numLinkedList.addEnd(20);
+        numLinkedList.addEnd(7);
 
-      numLinkedList.printMyList();
-       // System.out.println(myLinkedList.get(0));
-       // System.out.println(myLinkedList.get(1));
-       // System.out.println(myLinkedList.get(2));
-       // System.out.println(myLinkedList.get(3));
+        numLinkedList.addFront(0);
+        numLinkedList.addEnd(123);
+        numLinkedList.addFront(1);
+
+        numLinkedList.printMyList();
+        System.out.println("-------------------------------");
+        numLinkedList.remove(5);
+        numLinkedList.printMyList();
+
+        int index = numLinkedList.indexOf(15);
+        System.out.println("index = " + index);
+
+        System.out.println("The sum of the list is " + numLinkedList.sumOfList());
+
     }
 
 }
