@@ -16,6 +16,12 @@ public class Exercise_03 {
         myDoublyLinkedList.addEnd(56);
         myDoublyLinkedList.addEnd(67);
         myDoublyLinkedList.addEnd(78);
+        myDoublyLinkedList.printMyList();
+
+        System.out.println("--------------------");
+        myDoublyLinkedList.addFront(1);
+        myDoublyLinkedList.addFront(2);
+        myDoublyLinkedList.addFront(3);
 
         myDoublyLinkedList.printMyList();
     }
