@@ -34,7 +34,7 @@ public class CustomLinkedList<T> {
     }
 
     /**
-     * Inserts a new Node with the given data at the given index
+     * Inserts a new Node with the given data
      *
      * @param data  to be added
      */

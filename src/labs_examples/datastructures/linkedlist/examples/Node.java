@@ -14,7 +14,7 @@ public class Node<T> {
     // a simple constructor that takes in data
     public Node(T data) {
         this.data = data;
-        this.next = null;
+        next = null;
     }
 
     // an overloaded constructor we'll use to add Nodes to the front of the LinkedList

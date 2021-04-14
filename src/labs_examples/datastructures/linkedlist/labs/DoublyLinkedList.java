@@ -1,11 +1,11 @@
 package labs_examples.datastructures.linkedlist.labs;
 
-public class doublyLinkedList<N> {
+public class DoublyLinkedList<N> {
 
     private Node3 head;
     private Node3 tail;
 
-    public doublyLinkedList(N... data) {
+    public DoublyLinkedList(N... data) {
 
         if (data.length < 1) {
             head = null;
@@ -42,13 +42,13 @@ public class doublyLinkedList<N> {
 
             // so we need to iterate all the way through list to find last node
             // we'll know we've hit the last node when "iterator.next" is equal to null
-            while (iterator.next3 != null) {
-                iterator = iterator.next3;
+            while (iterator.next != null) {
+                iterator = iterator.next;
             }
 
             // once we exit the loop above, "iterator.next" will be referencing the final node in the list
             // at this point we can attach the new Node to the "next" variable of the final node in th list
-            iterator.next3 = new Node3(data);
+            iterator.next = new Node3(data, iterator);
 
         }
     }
@@ -60,33 +60,47 @@ public class doublyLinkedList<N> {
      */
     public void insertFront(N data) {
         // if "head" is null, create new root node
-        if (tail == null) {
-            tail = new Node3(data);
+        if (head == null) {
+            head = new Node3(data);
         } else {
-            // if we hit this "else" block, it means the user wants to attach the new node to the front of the list
-
-            // make a new reference to the tail node that we can use to traverse the list
-            // we do this so we NEVER lose a secure reference to the tail node
-            Node3 iterator = tail;
-
-            // so we need to iterate all the way through list to find last node
-            // we'll know we've hit the last node when "iterator.next" is equal to null
-            while (iterator.previous3 != null) {
-                iterator = iterator.previous3;
-            }
-
-            // once we exit the loop above, "iterator.previous3" will be referencing the final node in the list
-            // at this point we can attach the new Node to the "previous" variable of the final node in th list
-            iterator.previous3 = new Node3(data);
+            Node3 temp = head;
+            head = new Node3(data);
+            head.next = temp;
+            temp.previous = head;
         }
     }
 
-    public void printMyList() {
+    public void remove(N data) {
+        if (head.data == data) {
+            head = head.next;
+            head.previous = null;
+        }
+        else {
+            Node3 iterator = head;
+            while(iterator.next != null && iterator.data != data) {
+                iterator = iterator.next;
+            }
+            if (iterator.data == data) {
+                if (iterator.next == null) {
+                    Node3 previous = iterator.previous;
+                    previous.next = null;
+                } else {
+                    Node3 previous = iterator.previous;
+                    previous.next = iterator.next;
+                    iterator.previous = previous;
+                }
+            }
+        }
+
+
+    }
+
+    public void print() {
 
         Node3 iterator = head;
         do {
-            System.out.println(iterator.data3);
-            iterator = iterator.next3;
+            System.out.println(iterator.data);
+            iterator = iterator.next;
         } while (iterator != null);
     }
 }

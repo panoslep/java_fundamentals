@@ -6,9 +6,9 @@ package labs_examples.datastructures.linkedlist.examples;
 public class UsingLinkedList {
 
     public static void main(String[] args) {
-        CustomLinkedList<String> myLinkedList = new CustomLinkedList();
+        CustomLinkedList<String> myLinkedList = new CustomLinkedList("Hey");
 
-        myLinkedList.add("Hey");
+        //myLinkedList.add("Hey");
         myLinkedList.add("I'm");
         myLinkedList.add("using");
         myLinkedList.add("data structures!");
