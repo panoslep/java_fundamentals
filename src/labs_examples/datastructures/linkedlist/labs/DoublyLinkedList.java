@@ -91,12 +91,9 @@ public class DoublyLinkedList<N> {
                 }
             }
         }
-
-
     }
 
     public void print() {
-
         Node3 iterator = head;
         do {
             System.out.println(iterator.data);
