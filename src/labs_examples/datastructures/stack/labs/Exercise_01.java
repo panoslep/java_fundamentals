@@ -15,10 +15,24 @@ import java.util.Stack;
 public class Exercise_01 {
 
     public static void main(String[] args) {
-        Deque<Integer> stack1 = new ArrayDeque<Integer>();
-        Stack<Integer> stack2 = new Stack<Integer>();
+        Stack<Integer> stack = new Stack<Integer>();
+        stack.addElement(222);
+        stack.push(15);
+        stack.push(25);
+        stack.addElement(222);
+        System.out.println(stack);
+        System.out.println(stack.pop());
 
+        System.out.println(stack.peek());
+        System.out.println(stack);
+
+        System.out.println(stack.empty());
+        Stack<Integer> emptyStack = new Stack<Integer>();
+        System.out.println(emptyStack.empty());
+
+        System.out.println(stack.search(255));
     }
+
 
 //        push()
 //        addElement(item);
@@ -29,4 +43,4 @@ public class Exercise_01 {
     }
 
 
-}
+
