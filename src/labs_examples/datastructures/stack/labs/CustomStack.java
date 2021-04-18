@@ -33,16 +33,16 @@ public class CustomStack<T> {
         resize();
     }
 
-    //double capacity if more than 2/3 is occupied
     public void resize(){
         //2) resize the Stack (the underlying array) to be twice the size when the Stack is more than 3/4 full
         //3) resize the Stack (the underlying array) to be half the size when the Stack is more than 1/4 empty
         int currentSize = firstEmptyValue();
-        if (currentSize > 2/3*capacity) {
+        if (currentSize > (capacity*3/4)) {
             capacity *= 2;
         }
-        if (currentSize < (int) 0.25*capacity)
-            capacity *= 0.5; // (int) capacity/2;
+        if (currentSize < (capacity/4)) {
+            capacity /= 2;
+        }
 
         //change myArray to new capacity
         myArray = java.util.Arrays.copyOf(myArray, capacity);
@@ -63,19 +63,38 @@ public class CustomStack<T> {
     }
 
 
-    public T peak() {
-        return null;
+    public Object peekFirst() throws emptyArrayException{
+        if (empty())
+            throw new emptyArrayException("Your stack is empty");
+        return myArray[0];
     }
 
-    public T pop() {
-        return null;
+    public Object peekLast() throws emptyArrayException{
+        if (empty())
+            throw new emptyArrayException("Your stack is empty");
+        int index = firstEmptyValue()-1; //last element on stack
+        return myArray[index];
     }
+
+
+
+    public Object pop() throws emptyArrayException{
+        if (empty())
+            throw new emptyArrayException("Your stack is empty");
+        int index = firstEmptyValue()-1; //last element on stack
+        Object element2pop = myArray[index];
+        myArray[index] = null;
+        return element2pop;
+    }
+
 
     public int search(T item) {
         return 0;
     }
 
     public boolean empty() {
+        if (firstEmptyValue() > 0)
+            return false;
         return true;
     }
 
@@ -86,12 +105,21 @@ public class CustomStack<T> {
         }
     }
 
-    public int getCapacity() {
+    public int size() {
         return capacity;
     }
 }
 
-
+/**
+ * My custom exception class.
+ */
+class emptyArrayException extends Exception
+{
+    public emptyArrayException(String message)
+    {
+        super("Your stack is empty!");
+    }
+}
 
 //    /**
 //     * Removes an item from the stack

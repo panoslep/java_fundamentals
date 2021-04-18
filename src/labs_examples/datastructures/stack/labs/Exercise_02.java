@@ -1,9 +1,5 @@
 package labs_examples.datastructures.stack.labs;
 
-import labs_examples.datastructures.linkedlist.examples.CustomLinkedList;
-
-import java.util.Stack;
-
 /**
  *      Stacks - Exercise_02
  *
@@ -25,36 +21,39 @@ import java.util.Stack;
 
 public class Exercise_02 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws emptyArrayException {
 
         CustomStack<String> myStack = new CustomStack<String>();
 
 
 
         // check if the Stack is empty
-//        if (myStack.empty()){
-//            System.out.println("the stack is empty");
-//        }
+        if (myStack.empty()){
+            System.out.println("the stack is empty");
+        }
+
+        // System.out.println(myStack.pop());
 
         // push several elements onto the Stack
-        System.out.println(myStack.getCapacity());
-        System.out.println(myStack.firstEmptyValue());
+        System.out.println(myStack.size());
         myStack.push("Hello");
-        System.out.println(myStack.getCapacity());
-        System.out.println(myStack.firstEmptyValue());
+        System.out.println(myStack.size());
 
         myStack.push("World");
-        System.out.println(myStack.getCapacity());
-        System.out.println(myStack.firstEmptyValue());
+        System.out.println(myStack.size());
 
         myStack.push("Panos");
-        System.out.println(myStack.getCapacity());
+        System.out.println(myStack.size());
         myStack.push("is learning some Java");
-        System.out.println(myStack.getCapacity());
+        System.out.println(myStack.size());
         myStack.push("over here");
-        System.out.println(myStack.getCapacity());
+        System.out.println(myStack.size());
 
         myStack.printList();
+        System.out.println(myStack.pop());
+        System.out.println(myStack.peekFirst());
+        System.out.println(myStack.peekLast());
+        System.out.println(myStack.empty());
     }
 }
 
