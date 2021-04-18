@@ -37,11 +37,22 @@ public class Exercise_02 {
 //        }
 
         // push several elements onto the Stack
+        System.out.println(myStack.getCapacity());
+        System.out.println(myStack.firstEmptyValue());
         myStack.push("Hello");
+        System.out.println(myStack.getCapacity());
+        System.out.println(myStack.firstEmptyValue());
+
         myStack.push("World");
+        System.out.println(myStack.getCapacity());
+        System.out.println(myStack.firstEmptyValue());
+
         myStack.push("Panos");
+        System.out.println(myStack.getCapacity());
         myStack.push("is learning some Java");
+        System.out.println(myStack.getCapacity());
         myStack.push("over here");
+        System.out.println(myStack.getCapacity());
 
         myStack.printList();
     }

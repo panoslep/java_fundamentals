@@ -24,9 +24,11 @@ public class CustomStack<T> {
 
     // insert item into front of list
     public void push(T item) {
-
-        if (myArray[myArray.length] == null)
-            myArray[myArray.length] = item;
+        try {
+            myArray[firstEmptyValue()] = item;
+        } catch (Exception e) {
+            System.out.println("Something went wrong.");
+        }
 
         resize();
     }
@@ -36,15 +38,14 @@ public class CustomStack<T> {
         //2) resize the Stack (the underlying array) to be twice the size when the Stack is more than 3/4 full
         //3) resize the Stack (the underlying array) to be half the size when the Stack is more than 1/4 empty
         int currentSize = firstEmptyValue();
-        if (currentSize > 2/3*capacity)
+        if (currentSize > 2/3*capacity) {
             capacity *= 2;
-        if (currentSize < capacity/4)
-            capacity /= 2;
+        }
+        if (currentSize < (int) 0.25*capacity)
+            capacity *= 0.5; // (int) capacity/2;
 
         //change myArray to new capacity
-        Object[] temp_array = myArray;
-        Object[] myArray = (T[]) new Object[capacity];
-        
+        myArray = java.util.Arrays.copyOf(myArray, capacity);
     }
 
     public int firstEmptyValue(){
@@ -80,11 +81,14 @@ public class CustomStack<T> {
 
     public void printList() {
         for (Object x : myArray) {
+            if (x == null) return;
             System.out.println(x);
         }
-        System.out.println(myArray.length);
     }
 
+    public int getCapacity() {
+        return capacity;
+    }
 }
 
 
