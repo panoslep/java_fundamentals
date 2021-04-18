@@ -16,3 +16,39 @@ package labs_examples.datastructures.queue.labs;
  *      6) contain a method to print out the data of all elements in the Queue
  *
  */
+
+public class Exercise_02 {
+
+    public static void main(String[] args) throws EmptyArrayException2 {
+
+        MyCustomQueue<String> queue = new MyCustomQueue<String>();
+
+
+        // check if the Queue is empty
+        if (queue.empty()) {
+            System.out.println("the queue is empty");
+        }
+
+
+        // push several elements onto the Stack
+        System.out.println(queue.size());
+        queue.push("Hello");
+        System.out.println(queue.size());
+
+        queue.push("World");
+        System.out.println(queue.size());
+
+        queue.push("Panos");
+        System.out.println(queue.size());
+        queue.push("is learning some Java");
+        System.out.println(queue.size());
+        queue.push("over here");
+        System.out.println(queue.size());
+
+        queue.printList();
+        System.out.println(queue.pop());
+        System.out.println(queue.peekFirst());
+        System.out.println(queue.peekLast());
+        System.out.println(queue.empty());
+    }
+}
