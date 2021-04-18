@@ -2,6 +2,8 @@ package labs_examples.datastructures.stack.labs;
 
 import labs_examples.datastructures.linkedlist.examples.CustomLinkedList;
 
+import java.util.Stack;
+
 /**
  *      Stacks - Exercise_02
  *
@@ -25,7 +27,23 @@ public class Exercise_02 {
 
     public static void main(String[] args) {
 
+        CustomStack<String> myStack = new CustomStack<String>();
 
+
+
+        // check if the Stack is empty
+//        if (myStack.empty()){
+//            System.out.println("the stack is empty");
+//        }
+
+        // push several elements onto the Stack
+        myStack.push("Hello");
+        myStack.push("World");
+        myStack.push("Panos");
+        myStack.push("is learning some Java");
+        myStack.push("over here");
+
+        myStack.printList();
     }
 }
 
