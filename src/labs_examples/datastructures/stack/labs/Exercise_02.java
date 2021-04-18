@@ -1,5 +1,7 @@
 package labs_examples.datastructures.stack.labs;
 
+import labs_examples.datastructures.linkedlist.examples.CustomLinkedList;
+
 /**
  *      Stacks - Exercise_02
  *
@@ -18,3 +20,12 @@ package labs_examples.datastructures.stack.labs;
  *      TIP: To initialize an new array of a Generic type you can use this:
  *           Object[] data = (T[]) new Object[10];
  */
+
+public class Exercise_02 {
+
+    public static void main(String[] args) {
+
+
+    }
+}
+
