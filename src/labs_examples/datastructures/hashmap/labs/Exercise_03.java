@@ -1,5 +1,7 @@
 package labs_examples.datastructures.hashmap.labs;
 
+import java.util.*;
+
 /**
  *      HashMaps Exercise_03
  *
@@ -19,3 +21,61 @@ package labs_examples.datastructures.hashmap.labs;
  *      3) search for 100 elements
  *      4) delete 100 elements
  */
+
+public class Exercise_03 {
+    public static void main(String[] args) {
+
+        LinkedList<String> linkedList = new LinkedList<String>();
+        Stack<String> stack = new Stack<String>();
+        Queue<String> queue = new LinkedList<String>();
+        HashMap<Integer, String> hashMap = new HashMap<Integer, String>();
+
+        Timer timer = new Timer();
+
+        // add 100 elements
+        for (int i = 0; i < 100; i++) {
+            String str = String.valueOf(i);
+            linkedList.addLast(str);
+        }
+
+
+        // update 100 elements
+        for (int i = 0; i < 100; i++) {
+            String str = String.valueOf(i+1000);
+            //linkedList.replaceAll(str);
+        }
+
+
+        // STACK
+        // add 100 elements
+        for (int i = 0; i < 100; i++) {
+            String str = String.valueOf(i);
+            stack.add(str);
+        }
+
+        // update 100 elements
+        for (int i = 0; i < 100; i++) {
+            String str = String.valueOf(i+1000);
+            
+        }
+
+
+        // add 100 elements
+        for (int i = 0; i < 100; i++) {
+            String str = String.valueOf(i);
+            queue.add(str);
+        }
+
+        // add 100 elements
+        for (int i = 0; i < 100; i++) {
+            String str = String.valueOf(i);
+            hashMap.put(i, str);
+        }
+
+
+
+
+
+
+    }
+}
