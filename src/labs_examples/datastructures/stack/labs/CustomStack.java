@@ -117,32 +117,6 @@ class emptyArrayException extends Exception
 {
     public emptyArrayException(String message)
     {
-        super("Your stack is empty!");
+        super(message);
     }
 }
-
-//    /**
-//     * Removes an item from the stack
-//     * @return the removed item
-//     */
-//    public V pop() {
-//        try {
-//            // get first item
-//            V item = list.get(0);
-//            // remove first item
-//            list.remove(0);
-//            // return first item
-//            return item;
-//        } catch (NullPointerException ex) {
-//            System.out.println("Exception" + ex);
-//            return null;
-//        }
-//    }
-//
-//    /**
-//     * Determines if the stack is empty
-//     * @return true if empty, false if not empty
-//     */
-//    public boolean empty() {
-//        return list.isEmpty();
-//    }

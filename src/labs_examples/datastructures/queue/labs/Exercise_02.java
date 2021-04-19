@@ -46,7 +46,6 @@ public class Exercise_02 {
         System.out.println(queue.size());
 
         queue.printList();
-        System.out.println(queue.pop());
         System.out.println(queue.peekFirst());
         System.out.println(queue.peekLast());
         System.out.println(queue.empty());
