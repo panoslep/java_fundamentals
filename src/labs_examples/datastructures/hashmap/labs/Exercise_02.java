@@ -16,4 +16,5 @@ package labs_examples.datastructures.hashmap.labs;
  *          out a message indicating that the element does not exist
  *      8) add at least one more method that you think could be useful to the HashMap
  *          review Java's built-in HashMap for inspiration
+ *          -replace, size, putIfAbsent, isEmpty
  */

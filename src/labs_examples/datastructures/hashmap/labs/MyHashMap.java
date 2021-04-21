@@ -48,20 +48,22 @@ public class MyHashMap<P, R> {
             else {
                 // get the first Entry (in the linked list) at the given index
                 Data<P, R> h = map[mark];
-
-                // traverse the linked list
-                while (h.next != null) {
-                    h = h.next;
-                }
-
-                // after we exit the while loop above, we'll be at the end of the linked list
-                // this is where we can add the new Entry
-                h.next = data;
+                data.next = h;
                 numRecords++;
+
+//                // traverse the linked list
+//                while (h.next != null) {
+//                    h = h.next;
+//                }
+//
+//                // after we exit the while loop above, we'll be at the end of the linked list
+//                // this is where we can add the new Entry
+//                h.next = data;
+//                numRecords++;
             }
 
             // check for resize
-            if (numRecords > map.length * .75) {
+            if (numRecords > map.length * .5) {
                 // the resize method will create a bigger underlying array and
                 // add all values in the existing array to the new, larger array
                 increase();
@@ -75,7 +77,7 @@ public class MyHashMap<P, R> {
             // make a copy of the existing table and call it "old"
             Data<P, R>[] previous = map;
             // create a new Entry[] that is twice the size of the old one
-            map = new Data[previous.length * 2];
+            map = new Data[previous.length * 3];
 
             // iterate over the length of the old array
             for (int j = 0; j < previous.length; j++) {
@@ -109,6 +111,7 @@ public class MyHashMap<P, R> {
             // ensure key exists by calling the get() method
             if (receive(pointer) == null) {
                 // if the get() method returns null, there's nothing to delete
+                System.out.println("There's nothing to delete");
                 return;
             }
 
@@ -165,6 +168,7 @@ public class MyHashMap<P, R> {
 
             // nothing at key - return null
             if (map[mark] == null) {
+                System.out.println("The entry does not exist");
                 return null;
             }
 
@@ -178,6 +182,7 @@ public class MyHashMap<P, R> {
 
                 // if we reach the end of the list and haven't found it return null
                 if (data.next == null) {
+                    System.out.println("The entry does not exist");
                     return null;
                 }
 
@@ -196,6 +201,31 @@ public class MyHashMap<P, R> {
          */
         public int getStorageSize() {
             return map.length;
+        }
+
+        // Return number of records
+        public int hashSize() {return numRecords;}
+
+        // update the record if the pointer exists
+        public void update(P pointer, R new_record) {
+            // check if the pointer exists
+            if (receive(pointer) != null) {
+
+            }
+
+        }
+
+        public void addIfAbsent(P pointer, R record) {
+            // check if the element is absent
+
+            add(pointer, record);
+        }
+
+        public boolean isEmpty() {
+            if (numRecords == 0)
+                return true;
+            else
+                return false;
         }
 
     }
