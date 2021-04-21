@@ -19,7 +19,7 @@ package labs_examples.datastructures.queue.labs;
 
 public class Exercise_02 {
 
-    public static void main(String[] args) throws EmptyArrayException2 {
+    public static void main(String[] args) throws EmptyQueueException {
 
         MyCustomQueue<String> queue = new MyCustomQueue<String>();
 
@@ -46,8 +46,8 @@ public class Exercise_02 {
         System.out.println(queue.size());
 
         queue.printList();
-        System.out.println(queue.peekFirst());
-        System.out.println(queue.peekLast());
+        System.out.println(queue.peekOldest());
+        System.out.println(queue.peekNewest());
         System.out.println(queue.empty());
     }
 }

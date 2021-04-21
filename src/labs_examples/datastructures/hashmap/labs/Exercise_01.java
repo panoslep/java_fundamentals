@@ -65,15 +65,10 @@ public class Exercise_01{
         for (Map.Entry<String, Integer> x : people.entrySet())
             System.out.println(x);
 
-
-
-      //  people.forEach(String, Integer) -> System.out.println("key: "+String+" value:"+Integer));
-
-
+        people.forEach((k, v) -> System.out.println("key: "+ k +" value:" + v));
 
         System.out.println("Is people2 empty? " + people2.isEmpty());
         people2.clear();
         System.out.println("Is people2 empty? " + people2.isEmpty());
-
     }
 }

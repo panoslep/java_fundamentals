@@ -1,9 +1,5 @@
 package labs_examples.datastructures.stack.labs;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 /**    1) throw a custom exception when trying to pop an element from an empty Stack
         *      2) resize the Stack (the underlying array) to be twice the size when the Stack is more than 3/4 full
         *      3) resize the Stack (the underlying array) to be half the size when the Stack is more than 1/4 empty
@@ -18,14 +14,15 @@ import java.util.Arrays;
 public class CustomStack<T> {
 
     private int capacity = 10;
-    // How that works?
-    private Object[] myArray = (T[]) new Object[10];
+    private int size = 0;
+    private T[] myArray = (T[]) new Object[10];
 
 
     // insert item into front of list
     public void push(T item) {
         try {
-            myArray[firstEmptyValue()] = item;
+            myArray[size] = item;
+            size++;
         } catch (Exception e) {
             System.out.println("Something went wrong.");
         }
@@ -36,54 +33,42 @@ public class CustomStack<T> {
     public void resize(){
         //2) resize the Stack (the underlying array) to be twice the size when the Stack is more than 3/4 full
         //3) resize the Stack (the underlying array) to be half the size when the Stack is more than 1/4 empty
-        int currentSize = firstEmptyValue();
-        if (currentSize > (capacity*3/4)) {
+        if (size > (capacity*3/4)) {
             capacity *= 2;
+            //change myArray to new capacity
+            myArray = java.util.Arrays.copyOf(myArray, capacity);
         }
-        if (currentSize < (capacity/4)) {
+        if (size < (capacity/4) && myArray.length > 10) {
             capacity /= 2;
+            //change myArray to new capacity
+            myArray = java.util.Arrays.copyOf(myArray, capacity);
         }
 
-        //change myArray to new capacity
-        myArray = java.util.Arrays.copyOf(myArray, capacity);
-    }
 
-    public int firstEmptyValue(){
-
-        int count = 0;
-        for(Object element : myArray) {
-            if (element == null)
-                return count;// return the index of the first element that is null
-            count++;
-        }
-
-        // if we are here it means that we iterated over all elements
-        // and didn't find null value so it is time to return array length
-        return count;
     }
 
 
-    public Object peekFirst() throws emptyArrayException{
+    public Object peekFirst() throws EmptyArrayException {
         if (empty())
-            throw new emptyArrayException("Your stack is empty");
+            throw new EmptyArrayException("Your stack is empty");
         return myArray[0];
     }
 
-    public Object peekLast() throws emptyArrayException{
+    public Object peekLast() throws EmptyArrayException {
         if (empty())
-            throw new emptyArrayException("Your stack is empty");
-        int index = firstEmptyValue()-1; //last element on stack
+            throw new EmptyArrayException("Your stack is empty");
+        int index = size-1; //last element on stack
         return myArray[index];
     }
 
 
 
-    public Object pop() throws emptyArrayException{
+    public Object pop() throws EmptyArrayException {
         if (empty())
-            throw new emptyArrayException("Your stack is empty");
-        int index = firstEmptyValue()-1; //last element on stack
-        Object element2pop = myArray[index];
-        myArray[index] = null;
+            throw new EmptyArrayException("Your stack is empty");
+        Object element2pop = myArray[size-1];
+        myArray[size-1] = null;
+        size--;
         return element2pop;
     }
 
@@ -93,7 +78,7 @@ public class CustomStack<T> {
     }
 
     public boolean empty() {
-        if (firstEmptyValue() > 0)
+        if (size > 0)
             return false;
         return true;
     }
@@ -113,9 +98,9 @@ public class CustomStack<T> {
 /**
  * My custom exception class.
  */
-class emptyArrayException extends Exception
+class EmptyArrayException extends Exception
 {
-    public emptyArrayException(String message)
+    public EmptyArrayException(String message)
     {
         super(message);
     }

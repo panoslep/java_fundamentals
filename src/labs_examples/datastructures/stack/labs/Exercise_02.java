@@ -21,7 +21,7 @@ package labs_examples.datastructures.stack.labs;
 
 public class Exercise_02 {
 
-    public static void main(String[] args) throws emptyArrayException {
+    public static void main(String[] args) throws EmptyArrayException {
 
         CustomStack<String> myStack = new CustomStack<String>();
 
@@ -50,7 +50,7 @@ public class Exercise_02 {
         System.out.println(myStack.size());
 
         myStack.printList();
-        System.out.println(myStack.pop());
+        //System.out.println(myStack.pop());
         System.out.println(myStack.peekFirst());
         System.out.println(myStack.peekLast());
         System.out.println(myStack.empty());

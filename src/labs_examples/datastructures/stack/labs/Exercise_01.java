@@ -20,6 +20,9 @@ public class Exercise_01 {
         stack.push(15);
         stack.push(25);
         stack.addElement(222);
+
+        System.out.println(stack.search(222));
+
         System.out.println(stack);
         System.out.println(stack.pop());
 
@@ -30,7 +33,6 @@ public class Exercise_01 {
         Stack<Integer> emptyStack = new Stack<Integer>();
         System.out.println(emptyStack.empty());
 
-        System.out.println(stack.search(255));
     }
 
 

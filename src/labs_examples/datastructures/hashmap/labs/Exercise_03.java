@@ -30,7 +30,10 @@ public class Exercise_03 {
         Queue<String> queue = new LinkedList<String>();
         HashMap<Integer, String> hashMap = new HashMap<Integer, String>();
 
-        Timer timer = new Timer();
+        long startTime = System.nanoTime();
+        // move it at the end
+        long endTime = System.nanoTime();
+        long diffTime = endTime - startTime;
 
         // add 100 elements
         for (int i = 0; i < 100; i++) {
@@ -56,7 +59,7 @@ public class Exercise_03 {
         // update 100 elements
         for (int i = 0; i < 100; i++) {
             String str = String.valueOf(i+1000);
-            
+
         }
 
 
