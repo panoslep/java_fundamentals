@@ -19,3 +19,79 @@ package labs_examples.datastructures.hashmap.labs;
  *          -replace, size, putIfAbsent, isEmpty
  */
 
+public class Exercise_02 {
+
+    public static void main(String[] args) {
+
+        // create the (custom) hashmap
+        // the pointer (key) will be the name of the country (String)
+        // the record (value) will be the county object
+        MyHashMap<String, Country> countryMap = new MyHashMap();
+
+        // create a few Country objects
+        Country china = new Country("China", 1439323776, 9388211);
+        Country india = new Country("India", 1380004385, 2973190);
+        Country usa = new Country("USA", 331002651, 9147420);
+        Country indonesia = new Country("Indonesia", 273523615, 1811570);
+        Country pakistan = new Country("Pakistan", 220892340, 770880);
+
+        // add the Country objects into the MyHashMap
+        countryMap.add(china.getCountryName(), china);
+        countryMap.add(india.getCountryName(), india);
+        countryMap.add(usa.getCountryName(), usa);
+        countryMap.add(indonesia.getCountryName(), indonesia);
+        countryMap.add(pakistan.getCountryName(), pakistan);
+
+        // demonstrate "getting" an element out of the MyHashMap
+        Country example = countryMap.receive("USA");
+        System.out.println(countryMap.hashSize());
+        //System.out.println(example.getAreaInSq_km());
+
+
+    }
+}
+
+class Country {
+    private String countryName;
+    private int population;
+    private int areaInSq_km;
+
+    public Country(String name, int population, int areaInSq_km) {
+        this.countryName = name;
+        this.population = population;
+        this.areaInSq_km = areaInSq_km;
+    }
+
+    public String getCountryName() {
+        return countryName;
+    }
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
+    }
+
+    public int getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(int population) {
+        this.population = population;
+    }
+
+    public int getAreaInSq_km() {
+        return areaInSq_km;
+    }
+
+    public void setAreaInSq_km(int areaInSq_km) {
+        this.areaInSq_km = areaInSq_km;
+    }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "countryName='" + countryName + '\'' +
+                ", population=" + population +
+                ", sizeInSq_km=" + areaInSq_km +
+                '}';
+    }
+}
