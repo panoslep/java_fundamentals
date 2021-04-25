@@ -1,5 +1,9 @@
 package labs_examples.datastructures.hashmap.labs;
 
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
 /**
  *      HashMaps Exercise_02
  *
@@ -31,9 +35,12 @@ public class Exercise_02 {
         // create a few Country objects
         Country china = new Country("China", 1439323776, 9388211);
         Country india = new Country("India", 1380004385, 2973190);
-        Country usa = new Country("USA", 331002651, 9147420);
+        Country usa = new Country("United States", 331002651, 9147420);
         Country indonesia = new Country("Indonesia", 273523615, 1811570);
         Country pakistan = new Country("Pakistan", 220892340, 770880);
+        Country brazil = new Country("Brazil", 212559417, 8358140);
+
+        System.out.println("the underlining array capacity is: " + countryMap.getStorageSize());
 
         // add the Country objects into the MyHashMap
         countryMap.add(china.getCountryName(), china);
@@ -41,13 +48,30 @@ public class Exercise_02 {
         countryMap.add(usa.getCountryName(), usa);
         countryMap.add(indonesia.getCountryName(), indonesia);
         countryMap.add(pakistan.getCountryName(), pakistan);
+        countryMap.add(brazil.getCountryName(), brazil);
+
+
+        System.out.println("The size of the countryMap is: " + countryMap.hashSize());
+        System.out.println("the underlining array capacity has now changed to: " + countryMap.getStorageSize());
 
         // demonstrate "getting" an element out of the MyHashMap
-        Country example = countryMap.receive("USA");
-        System.out.println(countryMap.hashSize());
-        //System.out.println(example.getAreaInSq_km());
+        Country example = countryMap.receive("United States");
+        System.out.println(example.toString());
 
+        //replace entry
+        countryMap.update("United States", usa, pakistan);
+        example = countryMap.receive("United States");
+        System.out.println(example.toString());
+        // delete entry
+        countryMap.delete("United States");
+        countryMap.update("United States", pakistan, usa);
 
+        //update entry
+        china.setCountryName("PRC");
+        example = countryMap.receive("China");
+        System.out.println(example.toString());
+
+        // How do we loop through the whole list?
     }
 }
 

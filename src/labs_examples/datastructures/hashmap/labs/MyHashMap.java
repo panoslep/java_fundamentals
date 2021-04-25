@@ -1,6 +1,9 @@
 package labs_examples.datastructures.hashmap.labs;
 
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class MyHashMap<P, R> {
 
@@ -234,8 +237,7 @@ public class MyHashMap<P, R> {
             else
                 return false;
         }
-
-    }
+}
 
     /**
      * A Pointer-Record Pair
