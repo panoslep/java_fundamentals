@@ -207,18 +207,25 @@ public class MyHashMap<P, R> {
         public int hashSize() {return numRecords;}
 
         // update the record if the pointer exists
-        public void update(P pointer, R new_record) {
-            // check if the pointer exists
-            if (receive(pointer) != null) {
-
+        // returns true if the value was replaced
+        public boolean update(P pointer, R old_record, R new_record) {
+            // check if the old record exists
+            if (receive(pointer) == old_record) {
+                delete(pointer);
+                add(pointer, new_record);
+                return true;
             }
-
+            // if we reach this the old record does not match and it wasn't updated
+            return false;
         }
 
-        public void addIfAbsent(P pointer, R record) {
-            // check if the element is absent
-
+        // adds a record if it doesn't already exists
+        // returns true if the value was added
+        public boolean addIfAbsent(P pointer, R record) {
+            // check if the records exists
+            if (receive(pointer) == record) { return false;}
             add(pointer, record);
+            return true;
         }
 
         public boolean isEmpty() {
