@@ -42,7 +42,6 @@ public class MyHashMap<P, R> {
             // no element at the given index, means no collision
             // go ahead and simply add the value to the array
             if (map[mark] == null) {
-
                 map[mark] = data;
                 numRecords++;
             }
@@ -51,18 +50,23 @@ public class MyHashMap<P, R> {
             else {
                 // get the first Entry (in the linked list) at the given index
                 Data<P, R> h = map[mark];
-                data.next = h;
-                numRecords++;
 
-//                // traverse the linked list
-//                while (h.next != null) {
-//                    h = h.next;
-//                }
-//
-//                // after we exit the while loop above, we'll be at the end of the linked list
-//                // this is where we can add the new Entry
-//                h.next = data;
-//                numRecords++;
+                // traverse the linked list
+                while (h.next != null) {
+                    if (h.getPointer() == pointer) {
+                        h.setRecord(record);
+                        return;
+                    }
+                    h = h.next;
+                }
+
+                // after we exit the while loop above, we'll be at the end of the linked list
+                // this is where we can add the new Entry
+                Data temp = map[mark];
+                data.next = temp;
+                map[mark] = data;
+
+                numRecords++;
             }
 
             // check for resize
