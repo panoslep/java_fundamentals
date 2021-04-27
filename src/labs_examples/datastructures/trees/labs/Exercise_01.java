@@ -24,7 +24,7 @@ public class Exercise_01 {
 
 
     public static void main(String[] args) {
-
+        Exercise_01 bst = new Exercise_01(6, 10, 15, 3, 2, 1);
     }
 
     Exercise_01(int... data) {
@@ -58,11 +58,12 @@ public class Exercise_01 {
             node.leftChild = insert(data, node.leftChild);
         }
         else if (data > node.data) {
-            node.rightChild = insert(data, node.rightChild)
+            node.rightChild = insert(data, node.rightChild);
         }
         else {
             return node;
         }
+        
         return rebalanceInsert(node, data);
     }
 
@@ -75,14 +76,14 @@ public class Exercise_01 {
         int balanceFactor = leftHeight - rightHeight;
 
         if (balanceFactor > 1 && data < node.leftChild.data) {
-            return rotateRighht(node);
+            return rotateRight(node);
         }
         if (balanceFactor < -1 && data > node.rightChild.data) {
             return rotateLeft(node);
         }
         if (balanceFactor > 1 && data > node.leftChild.data) {
             node.leftChild = rotateLeft(node.leftChild);
-            return rotateRighht(node);
+            return rotateRight(node);
         }
         if (balanceFactor < -1 && data < node.rightChild.data) {
             return rotateLeft(node);
