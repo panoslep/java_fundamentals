@@ -38,6 +38,40 @@ public class Exercise_01 {
         }
     }
 
+    public void add(int data) {
+
+        Node newNode = new Node(data);
+        Node focusNode = root;
+
+        if (focusNode == null) {
+            root = newNode;
+        } else if (focusNode.data > data) {
+            if (focusNode.leftChild == null);
+            {
+                focusNode.leftChild = newNode;
+            } else {
+                
+            }
+        } else {
+            focusNode = focusNode.rightChild;
+        }
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
     private void insert(int data) {
         if (root == null) {
             root = new Node(data);
