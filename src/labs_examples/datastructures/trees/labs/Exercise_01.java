@@ -6,9 +6,9 @@ package labs_examples.datastructures.trees.labs;
     Please demonstrate how to create a custom Binary Search Tree (BST). Using your custom BST, demonstrate how to:
 
         1.) Create a new CustomBST
-        2.) Insert new elements
-        3.) Retrieve elements
-        4.) Update elements
+        2.) Insert new elements  -- add()
+        3.) Retrieve elements    -- get()
+        4.) Update elements      --
         5.) Delete elements
         6.) Print elements (Bonus: try in-order traversal, pre-order traversal, post-order traversal)
         7.) Keep the tree well balanced
@@ -24,7 +24,11 @@ public class Exercise_01 {
 
 
     public static void main(String[] args) {
-        Exercise_01 bst = new Exercise_01(6, 10, 15, 3, 2, 1);
+        Exercise_01 bst = new Exercise_01(6, 10,9, 15, 3, 5, 2, 1);
+        System.out.println(bst.root.leftChild.leftChild);
+        System.out.println(bst.get(15));
+        System.out.println("-------------------------");
+        bst.inOrderTraversal(bst.root);
     }
 
     Exercise_01(int... data) {
@@ -33,7 +37,7 @@ public class Exercise_01 {
             root = null;
         else {
             for (int i = 0; i < data.length; i++) {
-                insert(data[i]);
+                add(data[i]);
             }
         }
     }
@@ -45,32 +49,65 @@ public class Exercise_01 {
 
         if (focusNode == null) {
             root = newNode;
-        } else if (focusNode.data > data) {
-            if (focusNode.leftChild == null);
-            {
-                focusNode.leftChild = newNode;
-            } else {
-                
-            }
-        } else {
-            focusNode = focusNode.rightChild;
+            size++;
+            return;
         }
 
-
-
-
-
+        while(true){
+            if (focusNode.data > data) {
+                if (focusNode.leftChild == null) {
+                    focusNode.leftChild = newNode;
+                    size++;
+                    //balanceTree(blt);
+                    return;
+                } else {
+                    focusNode = focusNode.leftChild;
+                }
+            } else {
+                if (focusNode.rightChild == null) {
+                    focusNode.rightChild = newNode;
+                    size++;
+                    //balanceTree(blt);
+                    return;
+                } else {
+                    focusNode = focusNode.rightChild;
+                }
+            }
+        }
     }
 
+    public Node get(int data) {
+        Node newNode = new Node(data);
+        Node focusNode = root;
 
+        if (root == null) {
+            return null;
+        }
 
+        while (true) {
+            if (focusNode == null) {
+                return null;
+            }
 
+            if (focusNode.data == data) {
+                return focusNode;
+            } else if (focusNode.data > data) {
+                focusNode = focusNode.leftChild;
+            } else {
+                focusNode = focusNode.rightChild;
+            }
+        }
+    }
 
+    public void inOrderTraversal(Node node) {
+        if (node != null) {
+            inOrderTraversal(node.leftChild);
+            System.out.println(node);
+            inOrderTraversal(node.rightChild);
+        }
+    }
 
-
-
-
-
+ 
 
     private void insert(int data) {
         if (root == null) {
@@ -181,6 +218,13 @@ public class Exercise_01 {
         Node(int data) {
             this.data = data;
             this.height = 1;
+        }
+
+        @Override
+        public String toString() {
+            return "Node{" +
+                    "data=" + data +
+                    '}';
         }
     }
 }
